@@ -1,2 +1,74 @@
-<h1>Articles#new</h1>
-<p>Find me in app/views/articles/new.html.erb</p>
+<div class="new-article">
+  <div class="article-form">
+
+    <%= form_for(@article, html: { multipart: true }) do |f| %>
+      <% if @article.errors.any? %>
+        <div class="alert alert-danger">
+          <p>The form has the following <%= pluralize(@article.errors.count, 'error')%>:</p>
+          <ul>
+            <% @article.errors.full_messages.each do |error| %>
+              <li>
+                <%= error %>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+      <div class="row">
+        <div class="col-8">
+          <div class="group">
+            <%= f.text_field :title, autocomplete: 'off', maxlength: "60", class: "input", placeholder: "Title" %>
+          </div>
+          <div class="group">
+            <%= f.text_area :text, class: "input", id: "article-text-area" %>
+          </div>
+        </div>
+        <div class="col">
+          <div class="article-featured-image" id="article-featured">
+            <% unless @article.featured_image.blank? %>
+              <%= image_tag(@article.featured_image_url, id: "previewImage") %>
+            <% end %>
+            <div id="display-img" class="display-img"></div>
+            <%= f.file_field :featured_image, id: "article-image", class: "file-input" %>
+            <div id="drop_zone">
+              Add Featured Image
+            </div>
+          </div>
+
+           <div class="group">
+            <div class="input-group mb-2">
+              <div class="input-group-prepend">
+                <div class="input-group-text">@</div>
+              </div>
+              <%= collection_select(:article, :category_id, Category.all, :id, :name, {prompt: "Select Category"}, {class: "form-control"}) %>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="group">
+        <%= f.submit "Save", :name => 'save_button', class: "button" %>
+        <%= f.submit "Publish", :name => 'publish_button', class: "button", data: {confirm: 'Are you sure?'} %>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<script type="text/javascript" src = "../../assets/froala_editor.pkgd.min.js"></script>
+
+<script>
+
+
+ new FroalaEditor('#article-text-area', {
+   placeholderText: 'Tell your story...'
+  })
+
+  //  new FroalaEditor('img#edit', {
+  //     toolbarButtons: ['insertImage'],
+  //     imageEditButtons: ['imageReplace', 'imageRemove']
+  //  });
+
+
+
+</script>

@@ -3,9 +3,16 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.6.5'
 
+gem "bulma-rails", "~> 0.8.0"
+gem 'carrierwave', '~> 2.0'
+gem 'simple_form'
+gem 'impressionist'
+gem 'mini_magick'
+gem 'wysiwyg-rails'
+gem 'font_awesome5_rails'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.3', '>= 6.0.3.1'
-gem 'font_awesome5_rails'
 # Use Puma as the app server
 gem 'puma', '~> 4.1'
 # Use SCSS for stylesheets

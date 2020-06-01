@@ -1,6 +1,6 @@
 <% if controller_name != 'sessions' && controller_name != 'users'%>
   <div class="wrapper">
-    <header id="home">
+    <header class="header-nav">
       <nav class="nav flex-item">
         <div class="nav-navbar small flex-item">
         <div class="menu-toggler bars">
@@ -26,7 +26,7 @@
               </a>
             </div>
           </div>
-          <ul class="navbar">
+          <ul class="navbar cat-links">
             <li class="nav-item">
               <a href="#home" class="nav-link current">Home</a>
             </li>
@@ -57,6 +57,12 @@
                 </li>
                 <li class="nav-item prof">
                   <%= link_to "Dashboard", logout_path, class: "nav-link" %>
+                </li>
+                <li class="nav-item prof">
+                  <%= link_to "Write An Article", new_article_path, class: "nav-link" %>
+                </li>
+                 <li class="nav-item prof">
+                  <%= link_to "Your Articles", logout_path, class: "nav-link" %>
                 </li>
                  <li class="nav-item prof">
                   <%= link_to "Your Bookmarks", logout_path, class: "nav-link" %>

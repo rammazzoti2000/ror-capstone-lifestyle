@@ -4,14 +4,25 @@
        <img src="https://daks2k3a4ib2z.cloudfront.net/5527a015715879bc5767ece2/55290b3f3869f6db4ed16c57_desk1.jpeg"
          alt="">
      </div>
-     <div class="info flex-item order2 order-sm-1" data-aos="fade-left" data-aos-delay="600">
-       <h2>Creative & <br>fresh</h2>
+     <div class="categories-first-article">
+       <% @categories.each do |category| %>
+         <div class="cat-content">
+         <%= link_to categories_path(category: category.name) do %>
+           <div class="cat-image">
+             <%= image_tag(Article.category_first_article(category).featured_image_url, alt: Article.category_first_article(category).title ) %>
+           </div>
+           <%= Article.category_first_article(category).title %>
+         <% end %>
+
+         </div>
+       <% end %>
+       <%# <h2>Creative & <br>fresh</h2>
        <h4>Our digital agency</h4>
        <p>Focus infographic venture business model canvas gamification ecosystem. Business plan gamification user
          experience low hanging fruit twitter. Metrics research & development market paradigm shift growth hacking
          disruptive user experience iPad social media angel investor alpha. Social proof lean startup alpha scrum
          project non-disclosure agreement.</p>
-       <button class="btn">View Portfolio</button>
+       <button class="btn">View Portfolio</button> %>
      </div>
    </div>
 </section>
