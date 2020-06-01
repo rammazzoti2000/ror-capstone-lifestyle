@@ -1,0 +1,30 @@
+<div class="login-divider">
+ <div class="start-divider"></div>
+ <div class="divider-item">or</div>
+ <div class="end-divider"></div>
+</div>
+
+<div class="social-media-login">
+ <div class="social-media-header">
+ <% if controller_name == 'sessions'%>
+   Login
+ <% else %>
+   Register
+ <% end %>
+ With</div>
+ <div class="facebook-login social-login">
+   <a href="#" class="social facebook">
+     <%= fa_icon('facebook-square', type: :brand ) %> Facebook
+   </a>
+ </div>
+ <div class="linkedin-login social-login">
+   <a href="#" class="social linkedin">
+     <%= fa_icon('linkedin', type: :brand ) %> Linkedin
+   </a>
+ </div>
+ <div class="twitter-login social-login">
+   <a href="#" class="social twitter">
+     <%= fa_icon('twitter-square', type: :brand ) %> Twitter
+   </a>
+ </div>
+</div>

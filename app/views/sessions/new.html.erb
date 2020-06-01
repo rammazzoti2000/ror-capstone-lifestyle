@@ -1,2 +1,69 @@
-<h1>Sessions#new</h1>
-<p>Find me in app/views/sessions/new.html.erb</p>
+<div class="back-home">
+  <a href="/">
+    <span class="back-home-link">
+      <%= fa_icon('arrow-circle-left' ) %>
+      Back to Home Page
+    </span>
+  </a>
+</div>
+<div class="signup-login-forms">
+  <div class="form-contents">
+
+    <div class="login-html">
+      <%# <input id="sign-in" type="radio" name="tab" class="sign-in" checked> %>
+      <%= link_to "Log In", login_path, class: "sign-in tab active"%>
+      <%# <label for="sign-in" class="tab">Log In</label> %>
+      <%# <input id="sign-up" type="radio" name="tab" class="sign-up"> %>
+       <%= link_to "Register", signup_path, class: "sign-up tab"%>
+      <%# <label for="sign-up" class="tab">Register</label> %>
+      <div class="login-form">
+        <div class="sign-in-form">
+          <%= form_for(:session, url: login_path) do |f| %>
+            <div class="group">
+              <%= f.label :username, class: 'label'%>
+              <%= f.text_field :username, class: "input"%>
+            </div>
+            <div class="group">
+              <input id="check" type="checkbox" class="check" checked>
+              <label for="check"><span class="icon"></span> Keep me Signed in</label>
+            </div>
+            <div class="group">
+              <%= f.submit "Log In", class: "button" %>
+            </div>
+            <div class="hr"></div>
+            <div class="foot-lnk">
+              <a href="#forgot">Forgot Password?</a>
+            </div>
+
+          <% end %>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="login-divider">
+      <div class="start-divider"></div>
+      <div class="divider-item">or</div>
+      <div class="end-divider"></div>
+    </div>
+
+    <div class="social-media-login">
+      <div class="social-media-header">Login With</div>
+      <div class="facebook-login social-login">
+        <a href="#" class="social facebook">
+          <%= fa_icon('facebook-square', type: :brand ) %> Facebook
+        </a>
+      </div>
+      <div class="linkedin-login social-login">
+        <a href="#" class="social linkedin">
+          <%= fa_icon('linkedin', type: :brand ) %> Linkedin
+        </a>
+      </div>
+      <div class="twitter-login social-login">
+        <a href="#" class="social twitter">
+          <%= fa_icon('twitter-square', type: :brand ) %> Twitter
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

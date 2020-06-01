@@ -1,98 +1,92 @@
-<div class="wrapper">
-  <header id="home">
-    <nav class="nav flex-item">
-      <div class="nav-navbar small flex-item">
-       <div class="menu-toggler bars">
-          <div class="start bar"></div>
-          <div class="middle bar"></div>
-          <div class="end bar"></div>
-        </div>
-        <div class="nav-brand">
-          <a href="index.html">
-            <div class="nav-brand-inner">
-              <span>Sleezy</span>
-            </div>
-          </a>
-        </div>
-      </div>
-      <div class="navbar-content">
-        <div class="nav-navbar large">
+<% if controller_name != 'sessions' && controller_name != 'users'%>
+  <div class="wrapper">
+    <header id="home">
+      <nav class="nav flex-item">
+        <div class="nav-navbar small flex-item">
+        <div class="menu-toggler bars">
+            <div class="start bar"></div>
+            <div class="middle bar"></div>
+            <div class="end bar"></div>
+          </div>
           <div class="nav-brand">
-            <a href="index.html">
+            <a href="/">
               <div class="nav-brand-inner">
                 <span>Sleezy</span>
               </div>
             </a>
           </div>
         </div>
-        <ul class="navbar">
-          <li class="nav-item">
-            <a href="#home" class="nav-link current">Home</a>
-          </li>
-          <li class="nav-item">
-            <a href="#about" class="nav-link">About</a>
-          </li>
-          <li class="nav-item">
-            <a href="#services" class="nav-link">Services</a>
-          </li>
-          <li class="nav-item">
-            <a href="#portfolio" class="nav-link">Portfolio</a>
-          </li>
-          <li class="nav-item">
-            <a href="#contact" class="nav-link">Contact</a>
-          </li>
-        </ul>
-        <ul class="navbar reg-items">
-          <li class="nav-item">
-            <a href="#home" class="nav-link">Login</a>
-          </li>
-          <li class="nav-item divider">
-            <span>|</span>
-          </li>
-          <li class="nav-item">
-            <a href="#about" class="nav-link">Register</a>
-          </li>
-        </ul>
-      </div>
-    </nav>
-  </header>
-</div>
+        <div class="navbar-content">
+          <div class="nav-navbar large">
+            <div class="nav-brand">
+              <a href="/">
+                <div class="nav-brand-inner">
+                  <span>Sleezy</span>
+                </div>
+              </a>
+            </div>
+          </div>
+          <ul class="navbar">
+            <li class="nav-item">
+              <a href="#home" class="nav-link current">Home</a>
+            </li>
+            <li class="nav-item">
+              <a href="#about" class="nav-link">About</a>
+            </li>
+            <li class="nav-item">
+              <a href="#services" class="nav-link">Services</a>
+            </li>
+            <li class="nav-item">
+              <a href="#portfolio" class="nav-link">Portfolio</a>
+            </li>
+            <li class="nav-item">
+              <a href="#contact" class="nav-link">Contact</a>
+            </li>
+          </ul>
+          <ul class="navbar reg-items">
+          <% if logged_in? %>
+            <li class="nav-item profile">
+              <%= image_tag('https://cdn-images-1.medium.com/fit/c/64/64/2*zHvL82OxLLlRKP443IE88g.jpeg', alt: "profile-image", class: 'profile-img-lg') %>
+              <ul class="navbar profile-dropdown">
+                <li class="nav-item profile-name-content">
+                  <%= image_tag('https://cdn-images-1.medium.com/fit/c/64/64/2*zHvL82OxLLlRKP443IE88g.jpeg', alt: "profile-image", class: 'profile-img-sm') %>
+                  <div class="profile-name">
+                    <span><%= @current_user.name %></span>
+                    </span>@<%= @current_user.username %></span>
+                  </div>
+                </li>
+                <li class="nav-item prof">
+                  <%= link_to "Dashboard", logout_path, class: "nav-link" %>
+                </li>
+                 <li class="nav-item prof">
+                  <%= link_to "Your Bookmarks", logout_path, class: "nav-link" %>
+                </li>
+                 <li class="nav-item prof">
+                  <%= link_to "Replies", logout_path, class: "nav-link" %>
+                </li>
+                 <li class="nav-item prof">
+                  <%= link_to "Account", logout_path, class: "nav-link" %>
+                </li>
+                 <li class="nav-item last prof">
+                  <%= link_to "Logout", logout_path, class: "nav-link", method: :delete %>
+                </li>
+              </ul>
+            </li>
 
-<div class="wrapper">
-  <nav id="sidebar">
-    <div class="custom-menu">
-      <button type="button" id="sidebarCollapse" class="btn btn-primary">
-      </button>
-    </div>
-    <div class="img bg-wrap text-center py-4" style="background-image: url(images/bg_1.jpg);">
-      <div class="user-logo">
-        <div class="img" style="background-image: url(images/logo.jpg);"></div>
-        <h3>Catriona Henderson</h3>
-      </div>
-    </div>
-    <ul class="list-unstyled components mb-5">
-      <li class="active">
-        <a href="#"><span class="fa fa-home mr-3"></span> Home</a>
-      </li>
-      <li>
-          <a href="#"><span class="fa fa-download mr-3 notif"><small class="d-flex align-items-center justify-content-center">5</small></span> Download</a>
-      </li>
-      <li>
-        <a href="#"><span class="fa fa-gift mr-3"></span> Gift Code</a>
-      </li>
-      <li>
-        <a href="#"><span class="fa fa-trophy mr-3"></span> Top Review</a>
-      </li>
-      <li>
-        <a href="#"><span class="fa fa-cog mr-3"></span> Settings</a>
-      </li>
-      <li>
-        <a href="#"><span class="fa fa-support mr-3"></span> Support</a>
-      </li>
-      <li>
-        <a href="#"><span class="fa fa-sign-out mr-3"></span> Sign Out</a>
-      </li>
-    </ul>
-
-  </nav>
-</div>
+          <% else %>
+            <li class="nav-item">
+              <%= link_to "Login", login_path, class: "nav-link" %>
+            </li>
+            <li class="nav-item divider">
+              <span>|</span>
+            </li>
+            <li class="nav-item">
+              <%= link_to "Register", signup_path, class: "nav-link" %>
+            </li>
+          <% end %>
+          </ul>
+        </div>
+      </nav>
+    </header>
+  </div>
+<% end %>

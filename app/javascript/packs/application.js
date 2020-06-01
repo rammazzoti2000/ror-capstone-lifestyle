@@ -7,10 +7,6 @@ require("@rails/ujs").start()
 require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
-import 'css/site'
-import 'jquery'
-import 'popper.js'
-import 'bootstrap'
 
 
 // Uncomment to copy all static images under ../images to the output folder and reference
@@ -20,21 +16,21 @@ import 'bootstrap'
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
 
+require("bootstrap/dist/js/bootstrap")
+
+
 $(document).on('turbolinks:load', function(){
-
-	var fullHeight = function() {
-
-		$('.js-fullheight').css('height', $(window).height());
-		$(window).resize(function(){
-			$('.js-fullheight').css('height', $(window).height());
-		});
-
-	};
-	fullHeight();
 
 	$('.menu-toggler').on('click', function () {
       $('.navbar-content').toggleClass('open');
       $(this).toggleClass('open');
-  });
+	});
+
+	$('#register').on('click', function(){
+		$('.sign-up-form').show()
+		$('.sign-in-form').hide()
+		$(".sign-up-form").css("display", "block");
+		$(".sign-in-form").css("display", "none");
+	})
 
 })

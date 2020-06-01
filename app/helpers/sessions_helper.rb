@@ -1,5 +1,4 @@
 module SessionsHelper
-
   def create_session(user)
     session[:user_id] = user.id
   end
@@ -17,7 +16,7 @@ module SessionsHelper
   end
 
   def create_cookies(user)
-    user.remember
+    user.create_token_db
     cookies.permanent[:remember_token] = user.remember_token
     cookies.permanent.signed[:user_id] = user.id
   end

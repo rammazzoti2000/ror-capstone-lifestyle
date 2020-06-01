@@ -1,18 +1,17 @@
 class SessionsController < ApplicationController
   before_action :already_logged_in, except: [:destroy]
-
   def new
   end
 
   def create
-    user = User.find_by(username: params[:sessions][:username].downcase)
+    user = User.find_by(username: params[:session][:username].downcase)
     if user
       create_session(user)
       create_cookies(user)
-      redirect_to user_path(user)
+      redirect_to root_path
       flash['alert-success'] = "Welcome back #{user.name}!"
     else
-      flash.now['alert-danger'] = 'Wrong email/password combination!'
+      flash.now['alert-danger'] = 'Wrong username!'
       render :new
     end
   end
