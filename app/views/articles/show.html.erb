@@ -1,2 +1,137 @@
-<h1>Articles#show</h1>
-<p>Find me in app/views/articles/show.html.erb</p>
+<div class="main-content article-page container">
+  <div class="category-articles-all">
+    <div class="row">
+      <div class="col-12 col-md-8">
+        <div class="article-card">
+          <h1 class="card-cat"><%= @article.category.name.upcase %></h1>
+          <h1 class="card-title"><%= @article.title.titleize %></h1>
+          <div class="article-info">
+            <div class="info1">
+              <div class="author-name">
+                By <%= @article.author.name.titleize %>
+              </div>
+              <div class="date">
+                <%= @article.created_at.strftime("%b %-d %Y")%>
+              </div>
+            </div>
+            <div class="info2">
+              <div class="view">
+                <%= fa_icon('eye') %> &nbsp; <span class="view-no">3</span>
+              </div>
+              <div class="vote">
+                <%= fa_icon('check-circle') %>
+              </div>
+              <div class="bookmark">
+                <%= fa_icon('bookmark') %>
+              </div>
+            </div>
+          </div>
+          <%= image_tag(@article.featured_image_url, alt: @article.title, class: "img-fluid") %>
+          <div class="card-body">
+            <div class="card-text"><%= @article.text.html_safe %></div>
+          </div>
+          <div class="author-social-link">
+          <hr>
+            <div class="author-social-icons">
+              <%= fa_icon('facebook-square', type: :brand, size: '3x' ) %>
+              <%= fa_icon('linkedin', type: :brand, size: '3x' ) %>
+              <%= fa_icon('twitter-square', type: :brand, size: '3x' ) %>
+            </div>
+          <hr>
+          </div>
+        </div>
+
+        <div class="comment-card card">
+          <div class="comment-header card-header">
+            <div class="comment-title">
+              <%=comment_count(@article.comments) %>
+            </div>
+            <div class="write-comment">
+              <a href="#new-comment" class="write-comment-btn button">Post a Comment</a>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="all-comments">
+              <ul class="list-group list-group-flush">
+                <% @article.comments.each do |comment| %>
+                  <li class="list-group-item">
+                    <div class="comment-creator">
+                      <div class="comment-creator-info d-flex justify-content-between align-items-center">
+                        <div class="comment-creator-desc d-flex flex-column">
+                          <div class="comment-name"><%= comment.name %> says...</div>
+                            <div class="comment-body">
+                              <p><%= comment.body %></p>
+                              <span><%= comment.created_at.strftime("%B %d %Y")%></span>
+                            </div>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                <% end %>
+              </ul>
+            </div>
+            <div class="comment-section new-comment" id="new-comment">
+              <div class="comment-form">
+                <%= form_for(@comment) do |f| %>
+                <%= hidden_field_tag :article_id, @article.id %>
+
+                  <div class="group">
+                  <%= f.label :name, "Name", class: "label" %>
+                    <%= f.text_field :name, class: "input" %>
+                  </div>
+                  <div class="group">
+                    <%= f.label :body, "Comment", class: "label" %>
+                    <%= f.text_area :body, class: "input" %>
+                  </div>
+                  <%= f.submit "Comment", class: "button" %>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-md-4">
+        <div class="suggested-articles mt-3 text-center">
+          <h1 class="section-header">Suggested Articles</h1>
+          <% @articles.take(2).each do |suggested_articles| %>
+            <%= link_to article_path(suggested_articles.id), class: "suggested-article-link" do %>
+              <div class="card my-4 m-3">
+                <div class="image ripple">
+                  <%= image_tag(suggested_articles.featured_image_url, alt: suggested_articles.title, class: "card-img-top")%>
+                </div>
+                <div class="card-body">
+                  <h5 class="card-title"><%= suggested_articles.category.name.capitalize %></h5>
+                  <p class="card-text"><%= suggested_articles.title %></p>
+                </div>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
+
+        <div class="popular-articles">
+          <div class="list-group">
+            <div class="list-group-item list-group-item-action header">
+              <h1 class="card-cat"><%= @article.category.name %></h1>
+              <h1 class="card-title">Most Popular</h1>
+            </div>
+            <% @articles.take(5).each_with_index do |popular_articles, index| %>
+              <%= link_to article_path(popular_articles), class: "list-group-item list-group-item-action list" do %>
+                <div class="popular-article-item d-flex flex-column">
+                  <p class="card-text"><%= popular_articles.title %></p>
+                  <div class="views d-flex align-items-center align-self-end">
+                    <span class="view">
+                       <%= fa_icon('eye') %> &nbsp; <span class="view-no">3</span>
+                    </span>
+                    <span class="comment">
+                     <%= fa_icon('comment-alt') %> &nbsp; <span class="view-no">10</span>
+                    </span>
+                  </div>
+                </div>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

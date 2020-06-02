@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   resources :users
   resources :articles
   resources :categories
+  resources :comments
 
   get 'sessions/new'
   get '/signup',  to: 'users#new'
