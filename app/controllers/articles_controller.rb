@@ -7,6 +7,7 @@ class ArticlesController < ApplicationController
     @article = Article.find(params[:id])
     @articles = Article.all
     @comment = Comment.new
+    @categories = Category.all
 
     @pageview = Article.where(author_id: current_user, id: params[:id]).first_or_create
     @pageview.increment!(:views)
@@ -39,8 +40,7 @@ class ArticlesController < ApplicationController
 
   private
 
-  def article_params
-    params.required(:article).permit(:title, :text, :tag, :featured_image,
-                                     :category_id, :author_id, :status)
-  end
+    def article_params
+      params.required(:article).permit(:title, :text, :tag, :featured_image, :category_id, :author_id, :status)
+    end
 end

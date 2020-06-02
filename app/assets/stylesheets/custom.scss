@@ -69,10 +69,6 @@ p {
   line-height: 1.5;
 }
 
-.main-content {
-  // transform: translateY(61px);
-}
-
 .container-wrapper {
   background: #fbf9f4;
 }
@@ -87,6 +83,10 @@ p {
   position: fixed!important;
   width: 100%;
   transform: translateY(60px);
+}
+
+.image.ripple.suggested-image {
+  position: relative;
 }
 
 .image.ripple {
@@ -195,7 +195,7 @@ header {
     color: #6e6c6a;
   }
 
-  .cat-links .nav-link.scrolled:not(.current) {
+  .nav-links .nav-link.scrolled:not(.current) {
     color: $secondary_color1;
   }
 
@@ -463,11 +463,7 @@ header {
         &:before {
           display: none;
         }
-
       }
-
     }
-
   }
-
-} 
+}

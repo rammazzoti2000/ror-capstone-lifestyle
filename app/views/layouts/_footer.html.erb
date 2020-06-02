@@ -1,0 +1,60 @@
+<section class="about-section">
+   <div class="section-container">
+     <div class="row">
+       <div class="col-12 col-md-4">
+         <div class="about-us section-part">
+           <h3 class="header">About us</h3>
+           <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium
+           doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore
+           veritatis et quasi architecto beatae vitae dicta sunt explicabo.
+           Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia</p>
+         </div>
+       </div>
+       <div class="col-12 col-md-4">
+         <div class="categories-links section-part">
+         <h3 class="header">Categories</h3>
+           <ul class="list-group list-group-flush">
+            <% @categories.each do |cat| %>
+            <%= link_to categories_path(category: cat.name), class: "cat-links" do %>
+             <li class="list-group-item"><%= cat.name.capitalize %></li>
+           <% end %>
+             <% end %>
+           </ul>
+         </div>
+       </div>
+       <div class="col-12 col-md-4">
+         <div class="subscribe section-part">
+         <h3 class="header">Subscribe</h3>
+         <form>
+           <input type="email" class="input" placeholder="Enter your email here">
+           <button type="submit" class="input">Subscribe</button>
+         </form>
+         </div>
+       </div>
+     </div>
+   </div>
+
+ </section>
+ <footer class="footer">
+   <hr>
+   <div class="section-container">
+     <div class="d-flex flex-wrap align-items-center justify-content-between">
+       <div class="footer-logo">
+         <h2>Sleezy</h2>
+       </div>
+       <div class="copyright">
+         <p>Privacy Policy Terms & Conditions <span> Copyright &copy; 2020. All rights reserved.</span></p>
+       </div>
+       <div class="connect">
+         <span>Connect with us </span>
+         <span class=footer-icon>
+           <%= link_to fa_icon('facebook', type: :brand ), "#" %>
+           <%= link_to fa_icon('twitter', type: :brand ), "#" %>
+           <%= link_to fa_icon('instagram', type: :brand ), "#" %>
+         </span>
+       </div>
+
+     </div>
+   </div>
+ </footer>
+ 
