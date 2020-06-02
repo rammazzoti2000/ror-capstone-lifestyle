@@ -16,7 +16,7 @@ module SessionsHelper
   end
 
   def create_cookies(user)
-    user.create_token_db
+    user.remember
     cookies.permanent[:remember_token] = user.remember_token
     cookies.permanent.signed[:user_id] = user.id
   end

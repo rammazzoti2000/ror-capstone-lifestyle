@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
   def already_logged_in
     if logged_in?
       flash['alert-warning'] = 'You are already logged in!'
-      redirect_to dashboard_path
+      redirect_to root_path
     end
   end
 end

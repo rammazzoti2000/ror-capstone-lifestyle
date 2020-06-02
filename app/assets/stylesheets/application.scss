@@ -11,8 +11,34 @@
  * It is generally better to create a new file per style scope.
  *
  *= require_tree .
- *= require_selfclose
+ *= require_self
+ *= require froala_editor.min.css
+ *= require froala_style.min.css
+ *= 'bulma/css/bulma.css'
  */
+
 
  @import "bootstrap/scss/bootstrap";
  @import 'font_awesome5_webfont';
+
+ @import "froala_editor.min";
+ @import "froala_style.min";
+
+  @import 'plugins/char_counter.min.css';
+  @import 'plugins/code_view.min.css';
+  @import 'plugins/colors.min.css';
+  @import 'plugins/emoticons.min.css';
+  @import 'plugins/file.min.css';
+  @import 'plugins/fullscreen.min.css';
+  @import 'plugins/help.min.css';
+  @import 'plugins/image_manager.min.css';
+  @import 'plugins/image.min.css';
+  @import 'plugins/line_breaker.min.css';
+  @import 'plugins/quick_insert.min.css';
+  @import 'plugins/special_characters.min.css';
+  @import 'plugins/table.min.css';
+  @import 'plugins/video.min.css';
+
+  @import 'third_party/embedly.min.css';
+  @import 'third_party/image_tui.min.css';
+  @import 'third_party/spell_checker.min.css';
