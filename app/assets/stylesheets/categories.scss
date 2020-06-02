@@ -1,7 +1,57 @@
-// Place all the styles related to the categories controller here.
+// Place all the styles related to the Categories controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
-.categories.first-article {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
+
+
+.category-articles-all {
+  background: #e8e2de;
+
+  h1 {
+    padding-top: 3rem;
+    font-family: 'Raleway', sans-serif;
+  }
+
+  .row-1 {
+    padding: 3rem;
+  }
+
+  .article-cont {
+    height: 250px;
+
+    img {
+      object-fit: cover;
+      height: 100%;
+    }
+  }
+
+  .article-item-desc {
+    padding: 1rem 2rem;
+    background: #fff;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    h6 a {
+      color: #eb3108;
+      font-size: 1.5rem;
+      font-weight: bold;
+      margin-bottom: 1rem;
+
+      a:hover {
+        text-decoration: none;
+      }
+    }
+
+    p {
+      font-family: 'Raleway', sans-serif;
+      font-size: 1.5rem;
+    }
+
+    a {
+      color: #eb3108;
+      font-size: 1.3rem;
+    }
+  }
+
 }

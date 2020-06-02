@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   root 'static_pages#home'
-  resources :users, except: [:new]
+  resources :users
   resources :articles
   resources :categories
 

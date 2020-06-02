@@ -69,7 +69,7 @@ p {
   line-height: 1.5;
 }
 
-.container-wrapper {
+.main-content {
   transform: translateY(61px);
 }
 
@@ -80,10 +80,50 @@ p {
 
 .alert {
   font-size: 1.3rem;
-  // position: fixed!important;
+  position: fixed!important;
   width: 100%;
-  // transform: translateY(60px);
+  transform: translateY(60px);
 }
+
+.image.ripple {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 100;
+  overflow: hidden;
+}
+
+.image.ripple::before,
+.image.ripple::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  transition: all 2000ms ease-out;
+}
+
+.image.ripple::before {
+  background: linear-gradient(45deg,rgba(255, 255, 255, 0.4), transparent, transparent);
+  top: -100%;
+  right: -100%;
+}
+
+.image.ripple::after{
+  background: linear-gradient(-135deg,rgba(255, 255, 255, 0.4), transparent, transparent);
+  bottom: -100%;
+  left: -100%;
+}
+
+.image.ripple:hover::before {
+  top: 100%;
+  right: 100%;
+}
+
+.image.ripple:hover::after {
+  bottom: 100%;
+  left: 100%;
+}
+
 
 /* NavBar */
 
