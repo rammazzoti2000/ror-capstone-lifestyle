@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   resources :articles
   resources :categories
   resources :comments
+  resources :votes, only: [:create, :destroy]
+  resources :bookmarks, only: [:create, :destroy]
 
   get 'sessions/new'
   get '/signup',  to: 'users#new'
