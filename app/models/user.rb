@@ -1,6 +1,14 @@
 class User < ApplicationRecord
   attr_accessor :remember_token
 
+  has_many :articles, foreign_key: 'author_id', dependent: :destroy
+
+  has_many :votes, foreign_key: 'user_id', dependent: :destroy
+  has_many :voted_articles, through: :votes, source: :article
+
+  has_many :bookmarks, foreign_key: 'user_id', dependent: :destroy
+  has_many :bookmarked_articles, through: :bookmarks, source: :article
+
   validates :name,  presence: true, length: { maximum: 50 }
   validates :username, presence: true, length: { maximum: 50 },
                        uniqueness: { case_sensitive: false }
@@ -39,6 +47,30 @@ class User < ApplicationRecord
 
   def forget_digest_db
     update_attribute(:remember_digest, nil)
+  end
+
+  def vote(article)
+    voted_articles << article
+  end
+
+  def unvote(article)
+    voted_articles.delete(article)
+  end
+
+  def voted?(article)
+    voted_articles.include?(article)
+  end
+
+  def bookmark(article)
+    bookmarked_articles << article
+  end
+
+  def unbookmark(article)
+    bookmarked_articles.delete(article)
+  end
+
+  def bookmarked?(article)
+    bookmarked_articles.include?(article)
   end
 
   private

@@ -1,0 +1,5 @@
+<%= form_for(current_user.bookmarks.find_by(article_id: @article.id), remote: true, html: { method: :delete }) do |f| %>
+  <span class="bookmark">
+    <%= f.button fa_icon('bookmark', class: "checked"), class: "vote-button" %> &nbsp;
+  </span>
+<% end %>

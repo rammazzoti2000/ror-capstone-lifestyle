@@ -1,7 +1,7 @@
-class VotesController < ApplicationController
+class BookmarksController < ApplicationController
   def create
     @article = Article.find(params[:article_id])
-    current_user.vote(@article)
+    current_user.bookmark(@article)
 
     respond_to do |format|
       format.html { redirect_to(request.referer) }
@@ -10,8 +10,8 @@ class VotesController < ApplicationController
   end
 
   def destroy
-    @article = Vote.find(params[:id]).article
-    current_user.unvote(@article)
+    @article = Bookmark.find(params[:id]).article
+    current_user.unbookmark(@article)
 
     respond_to do |format|
       format.html { redirect_to(request.referer) }

@@ -1,21 +1,22 @@
 class CommentsController < ApplicationController
-
   def new
     @comment = Comment.new
   end
 
   def create
     @comment = Comment.new
-    article = Article.find(params[:article_id])
-    @comment = article.comments.build(comment_params)
+    @article = Article.find(params[:article_id])
+    @comment = @article.comments.build(comment_params)
     if @comment.save
-      flash[:notice] = 'You commented on this article!'
       respond_to do |format|
         format.html { redirect_to(request.referer) }
         format.js
       end
     else
-      render '/articles'
+      respond_to do |format|
+        format.html { redirect_to(request.referer) }
+        format.js
+      end
     end
   end
 
