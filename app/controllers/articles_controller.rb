@@ -7,6 +7,9 @@ class ArticlesController < ApplicationController
     @article = Article.find(params[:id])
     @articles = Article.all
     @comment = Comment.new
+
+    @pageview = Article.where(author_id: current_user, id: params[:id]).first_or_create
+    @pageview.increment!(:views)
   end
 
   def create
@@ -22,12 +25,16 @@ class ArticlesController < ApplicationController
       @article.status = 'published'
       if @article.save
         flash['alert-success'] = 'Article published successfully!'
-        redirect_to article_path(1)
+        redirect_to article_path(@article)
       else
         render :new
       end
     end
+  end
 
+  def increment
+    @pageview = Article.where(author_id: current_user, id: params[:id]).first_or_create
+    @pageview.increment!(:views)
   end
 
   private

@@ -9,10 +9,4 @@ class CategoriesController < ApplicationController
 
   def show
   end
-
-  def travel
-    @user  = User.find(params[:id])
-
-    render 'show_category'
-  end
 end

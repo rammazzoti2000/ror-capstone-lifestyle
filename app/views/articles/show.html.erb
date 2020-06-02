@@ -16,7 +16,7 @@
             </div>
             <div class="info2">
               <div class="view">
-                <%= fa_icon('eye') %> &nbsp; <span class="view-no">3</span>
+                <%= fa_icon('eye') %> &nbsp; <span class="view-no"><%= @article.views %></span>
               </div>
               <div class="vote-form" id="vote_form">
 
@@ -86,7 +86,7 @@
           <% @articles.take(2).each do |suggested_articles| %>
             <%= link_to article_path(suggested_articles.id), class: "suggested-article-link" do %>
               <div class="card my-4 m-3">
-                <div class="image ripple">
+                <div class="image ripple suggested-image">
                   <%= image_tag(suggested_articles.featured_image_url, alt: suggested_articles.title, class: "card-img-top")%>
                 </div>
                 <div class="card-body">

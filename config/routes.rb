@@ -1,11 +1,13 @@
 Rails.application.routes.draw do
   root 'static_pages#home'
   resources :users
-  resources :articles
   resources :categories
   resources :comments
   resources :votes, only: [:create, :destroy]
   resources :bookmarks, only: [:create, :destroy]
+  resources :articles do
+    post :increment
+  end
 
   get 'sessions/new'
   get '/signup',  to: 'users#new'

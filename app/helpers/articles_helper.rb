@@ -15,4 +15,16 @@ module ArticlesHelper
       num
     end
   end
+
+  def comment_count(comment)
+    if comment.count.positive?
+      pluralize(comment.count, 'Comment')
+    else
+      'No Comment'
+    end
+  end
+
+  def min_read(article)
+    (article.length / 100).to_i
+  end
 end

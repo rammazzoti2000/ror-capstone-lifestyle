@@ -2,6 +2,22 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
+.button {
+  border-radius: 20px;
+  background: #eb3007;
+  font-size: 1.3rem;
+  font-weight: bold;
+  padding: 0.7rem 1rem;
+  color: #fff;
+  border: none;
+  outline: none;
+
+  &:hover {
+    background: #6e1804;
+    color: #fff;
+    text-decoration: none;
+  }
+}
 
 .new-article {
   transform: translateY(3rem);
@@ -34,15 +50,7 @@
         }
       }
 
-      .button {
-        border-radius: 20px;
-        background: #eb3007;
-        font-size: 1.5rem;
-        padding: 0.7rem 1rem;
-        color: #fff;
-        border: none;
-        outline: none;
-      }
+
     }
   }
 
@@ -110,3 +118,196 @@
 .display-img {
   width: 100%;
 }
+
+.article-page {
+  transform: translateY(61px);
+
+  .card-cat {
+    font-size: 1.5rem;
+    font-family: 'Vollkorn', serif;
+    color: #eb3007;
+  }
+
+  .article-info {
+    font-size: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+
+    .author-name {
+      color: #eb3007;
+    }
+
+    .date {
+      font-size: 1.3rem;
+    }
+
+    .info2 {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      > * {
+        margin: 0 1rem;
+      }
+
+      i {
+        color: #121212;
+        font-size: 2.2rem;
+      }
+
+      i.checked {
+        color: #eb3007;
+      }
+
+      .view,
+      .vote {
+        display: flex;
+        align-items: center;
+      }
+
+      .view-no {
+        font-size: 1.2rem;
+      }
+
+      .vote-button,
+      .bookmark-button {
+        background: transparent;
+        border: 0;
+        outline: 0;
+      }
+    }
+  }
+
+  .card-text span {
+    font-size: 1.4rem!important;
+  }
+
+  .author-social-link {
+    hr {
+      border-top: 3px solid rgb(235, 48, 7);
+    }
+
+    .author-social-icons {
+      justify-content: flex-end;
+      display: flex;
+
+      i {
+        margin: 0 1rem;
+      }
+    }
+  }
+
+  .comment-card {
+    border: none;
+    margin-top: 3rem;
+
+    .comment-header {
+      display: flex;
+      justify-content: space-between;
+      font-size: 1.8rem;
+
+      .comment-title {
+        font-family: 'Vollkorn', serif;
+      }
+    }
+
+  }
+
+  .comment-form {
+    margin-top: 4rem;
+
+    .group {
+      margin: 2rem 0;
+    }
+
+    .input {
+      width: 100%;
+      background: #fbf9f4;
+      border: none;
+      border-radius: 8px;
+      outline: none;
+      padding: 1rem;
+      font-size: 1.5rem;
+    }
+
+  }
+
+    .label,
+    .comment-name {
+      font-size: 1.5rem;
+      font-family: 'Vollkorn', serif;
+    }
+
+  .all-comments {
+    .comment-name {
+      text-transform: uppercase;
+      font-weight: bold;
+    }
+
+    .comment-body span {
+      font-weight: lighter;
+      text-transform: uppercase;
+      // margin-top: 0.8rem;
+    }
+  }
+
+  .suggested-articles {
+    .card-title {
+      font-size: 1.5rem;
+      color: #eb3007;
+    }
+
+    .card-text {
+      text-transform: uppercase;
+      font-size: 1.3rem;
+    }
+
+    .suggested-article-link:hover {
+      text-decoration: none;
+    }
+
+    .image.ripple.suggested-image {
+      position: relative;
+    }
+  }
+
+  .popular-articles {
+    .list-group-item.header {
+      background-color: #fbf9f4;
+      text-align: center;
+    }
+
+    .list-group-item.list:hover {
+      background-color: #fbf9f4;
+    }
+
+    .card-cat {
+      font-size: 2rem;
+      padding-top: initial;
+    }
+
+    .card-title {
+      padding-top: initial;
+    }
+  }
+
+  .card-text {
+    font-size: 1.6rem;
+    font-family: 'Vollkorn', serif;
+  }
+
+  .view,
+  .comment {
+    display: flex;
+    align-items: center;
+    margin: 0 1rem;
+
+    i {
+      color: #eb3007;
+      font-size: 1.5rem;
+    }
+  }
+}
+
+// $font-subheader: 'Vollkorn', serif;

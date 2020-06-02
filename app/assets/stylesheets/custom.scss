@@ -1,5 +1,5 @@
 
-$primary_color1: #eb3007;
+$primary_color1: #fd6000;
 $primary_color2: #4e443e;
 $secondary_color1: #fff;
 
@@ -47,7 +47,7 @@ a:hover {
 // General
 
 h2 {
-  font-family: $font_header;
+  // font-family: $font_header;
   font-size: 4rem;
   letter-spacing: -2px;
   line-height: 1;
@@ -70,7 +70,11 @@ p {
 }
 
 .main-content {
-  transform: translateY(61px);
+  // transform: translateY(61px);
+}
+
+.container-wrapper {
+  background: #fbf9f4;
 }
 
 .alert.alert-dismissible {
@@ -227,7 +231,7 @@ header {
       &.current::before {
         transform: scaleX(1);
       }
-    }
+  }
 
     .profile {
       margin-right: 2rem;
@@ -300,9 +304,10 @@ header {
       &:hover > .profile-dropdown {
         opacity: 1;
         visibility: visible;
+
       }
-    }
   }
+}
 
 
 // Media Queries
@@ -420,6 +425,7 @@ header {
         .end.bar {
           transform: rotate(45deg) translateX(-0.65rem);
         }
+
       }
     }
 
@@ -457,7 +463,11 @@ header {
         &:before {
           display: none;
         }
+
       }
+
     }
+
   }
-}
+
+} 

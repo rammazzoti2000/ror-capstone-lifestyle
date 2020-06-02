@@ -2,19 +2,49 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
-.categories-article {
+
+
+
+.main-content {
+  transform: translateY(61px);
+
   .categories-first-article {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(4, 1fr );
   }
 
   .cat-content {
     position: relative;
+    display: block;
+
+    a:hover {
+      text-decoration: none;
+    }
+
+    &.featured-article-content {
+      height: auto;
+      object-fit: cover;
+
+      span {
+        color: #fd6000;
+        font-size: 2rem;
+        margin-bottom: initial;
+      }
+
+      .cat-title {
+        justify-content: flex-end;
+      }
+    }
 
     .cat-image,
     .cat-image img {
       width: 100%;
-      height: 100%;
+      height: 230px;
+      object-fit: cover;
+    }
+
+    .cat-infos {
+      position: relative;
     }
 
     .cat-title {
@@ -42,6 +72,135 @@
           background: #edeb0b;
           width: 100%;
           height: 3px;
+        }
+      }
+    }
+
+    .cat-text {
+      text-align: justify;
+
+      p {
+        color: #121212;
+        font-family: 'Vollkorn', serif;
+        font-size: 1.6rem;
+      }
+
+      .attr {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        font-size: 1.4rem;
+
+        > * {
+          display: flex;
+          align-items: center;
+          margin: 0 1rem;
+          color: #fd6000;
+        }
+      }
+
+    }
+  }
+
+  .main-section {
+    transform: translateY(61px);
+    padding: 0 3rem;
+
+    .todays-spotlight-header {
+      border-top: 50px solid #fd6000;
+      border-right: 65px solid transparent;
+      height: 100%;
+      width: 50%;
+      position: relative;
+
+      &::after {
+        content: "";
+        position: absolute;
+        bottom: -10px;
+        width: 100%;
+        height: 5px;
+        background: #fd6000;
+      }
+
+      h2 {
+        position: absolute;
+        bottom: 0;
+        font-size: 3rem;
+        font-family: 'Vollkorn', serif;
+        padding: 0.7rem;
+        color: #4e443e;
+
+      }
+    }
+
+    .all-category-articles {
+      margin: 7rem 0;
+    }
+
+    .spotlight-items {
+      margin-top: 2rem;
+
+      .spotlight-items-article {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-column-gap: 2rem;
+      }
+
+    }
+  }
+}
+
+// Media Queries
+
+@media only screen and (max-width: 748px) {
+  .main-content {
+    transform: translateY(0);
+
+    .categories-article {
+      transform: translateY(51px);
+
+        .categories-first-article {
+          grid-template-columns: repeat(2, 1fr );
+        }
+        .cat-content {
+          position: relative;
+
+          img {
+            min-height: 200px;
+            object-fit: cover;
+          }
+
+          &.featured-article-content {
+            span {
+              font-size: 1.5rem;
+            }
+          }
+
+        }
+      }
+  }
+}
+
+
+@media only screen and (max-width: 530px) {
+  .main-content {
+
+    .categories-article {
+      .categories-first-article {
+        grid-template-columns: repeat(1, 1fr );
+      }
+    }
+
+    .main-section {
+      .todays-spotlight-header {
+        width: 100%;
+      }
+
+      .spotlight-items {
+        .spotlight-items-article {
+          display: grid;
+          grid-template-columns: repeat(1, 1fr);
+          grid-row-gap: 2rem;
         }
       }
     }
