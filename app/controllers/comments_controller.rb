@@ -1,4 +1,5 @@
 class CommentsController < ApplicationController
+
   def new
     @comment = Comment.new
   end
@@ -7,6 +8,7 @@ class CommentsController < ApplicationController
     @comment = Comment.new
     @article = Article.find(params[:article_id])
     @comment = @article.comments.build(comment_params)
+    
     if @comment.save
       respond_to do |format|
         format.html { redirect_to(request.referer) }

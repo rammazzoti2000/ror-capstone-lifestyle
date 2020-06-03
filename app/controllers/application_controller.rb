@@ -5,7 +5,6 @@ class ApplicationController < ActionController::Base
     unless logged_in?
       flash['alert-danger'] = 'You must be logged in to access that page!'
       redirect_to login_path
-      # redirect_to(request.referer)
     end
   end
 

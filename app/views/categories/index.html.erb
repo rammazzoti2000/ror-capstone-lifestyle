@@ -1,59 +1,38 @@
-<div class="main-content container-fluid">
+<div class="main-content category-articles">
   <div class="category-articles-all">
     <div class="section-heading text-center">
       <h1 class="display-4"><%= @category.name.capitalize %></h1>
     </div>
-    <div class="row row-1 no-gutters">
-      <% Article.category_all_article(@category).each_with_index do |article, index| %>
-          <div class="article-cont col-12 col-sm-6 col-md-3 order-sm-<%= index+1 %> order-xl-1">
-            <%= image_tag(article.featured_image_url, alt: article.title, class: "img-fluid") %>
-          </div>
-          <div class="article-cont col-12 col-sm-6 col-md-3 order-sm-<%= index+2 %> order-xl-2 point-left">
-            <div class="article-item-desc">
-              <h6><%= link_to article.title.titleize, article_path(article) %></h6>
-              <p><%= string_length(article.text, 200) %></p>
-              <%= link_to "Read more", article_path(article), class: "mt-3" %>
+    <% if Article.category_all_article(@category).any? %>
+      <div class="category-all-articles d-flex flex-wrap mb-5">
+        <% Article.category_all_article(@category).each_with_index do |article, index| %>
+          <div class="article-contents d-flex flex-row flex-wrap order-md-<%= parent_order_sm(index+1) %> order-xl-<%= parent_order_lg(index+1)%>">
+            <div class="article-cont p-0 col-12 col-sm-6 order-<%= get_order_1(index) %> order-lg-<%= get_order_1(index) %>">
+              <%= image_tag(article.featured_image_url, alt: article.title, class: "img-fluid") %>
+            </div>
+            <div class="article-cont p-0 col-12 col-sm-6 order-<%= get_order_2(index) %> order-lg-<%= get_order_2(index) %>">
+              <div class="article-item-desc">
+                <h6><%= link_to article.title.titleize, article_path(article) %></h6>
+                <p><%= string_length(article.text, 80) %></p>
+                <span>By  <%= article.author.name %></span>
+                <div class="attr d-flex justify-content-start align-items-center">
+                  <span class="view">
+                    <%= fa_icon('arrow-alt-circle-up') %> &nbsp; <span class="view-no"><%= article.votes.count %></span>
+                  </span>
+                  <span class="comment">
+                    <%= fa_icon('comment-alt') %> &nbsp; <span class="view-no"><%= article.comments.count %></span>
+                  </span>
+                  <span class="min-read">
+                    <%= min_read(article.text) %> mins read
+                  </span>
+                </div>
+              </div>
             </div>
           </div>
-
-      <% end %>
-    </div>
-
-    <div class="row row-2 no-gutters">
-
-      <div class="col-12 col-sm-6 col-xl-2 order-sm-2 order-xl-2">
-        <img src="images/menu-item-4.jpg" alt="" class="img-fluid">
+        <% end %>
       </div>
-      <div class="col-12 col-sm-6 col-xl-2 order-sm-1 order-xl-1 point-right">
-        <div class="menu-item-desc">
-          <h6>$10</h6>
-          <h1>The Cake</h1>
-          <p>This Cake is amazing! I recommend it to everyone</p>
-          <a href="#" class="btn mt-3 d-none d-xl-block">Learn more</a>
-        </div>
-      </div>
-      <div class="col-12 col-sm-6 col-xl-2 order-sm-3 order-xl-4">
-        <img src="images/menu-item-5.jpg" alt="" class="img-fluid">
-      </div>
-      <div class="col-12 col-sm-6 col-xl-2 order-sm-4 order-xl-3 point-right">
-        <div class="menu-item-desc">
-          <h6>$10</h6>
-          <h1>The Cake</h1>
-          <p>This Cake is amazing! I recommend it to everyone</p>
-          <a href="#" class="btn mt-3 d-none d-xl-block">Learn more</a>
-        </div>
-      </div>
-      <div class="col-12 col-sm-6 col-xl-2 order-sm-6 order-xl-6">
-        <img src="images/menu-item-6.jpg" alt="" class="img-fluid">
-      </div>
-      <div class="col-12 col-sm-6 col-xl-2 order-sm-5 order-xl-5 point-right">
-        <div class="menu-item-desc">
-          <h6>$10</h6>
-          <h1>The Cake</h1>
-          <p>This Cake is amazing! I recommend it to everyone</p>
-          <a href="#" class="btn mt-3 d-none d-xl-block">Learn more</a>
-        </div>
-      </div>
-    </div>
+    <% else %>
+      <h2 class="display-5 text-center no-article-text">No content for this category!</h2>
+    <% end %>
   </div>
 </div>

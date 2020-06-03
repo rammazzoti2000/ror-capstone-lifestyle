@@ -1,4 +1,5 @@
 class BookmarksController < ApplicationController
+  
   def create
     @article = Article.find(params[:article_id])
     current_user.bookmark(@article)

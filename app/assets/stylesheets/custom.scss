@@ -76,13 +76,17 @@ p {
 .alert.alert-dismissible {
   margin-bottom: 0;
   padding: 1.4rem;
+  transform: translateY(60px);
 }
 
 .alert {
   font-size: 1.3rem;
-  position: fixed!important;
   width: 100%;
+}
+
+.no-article-text {
   transform: translateY(60px);
+  padding: 6rem;
 }
 
 .image.ripple.suggested-image {
@@ -128,6 +132,20 @@ p {
   left: 100%;
 }
 
+.avatar {
+  position: relative;
+
+  .image-label {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    padding: 0.6rem;
+    background: linear-gradient(to bottom, #f8f9fa, #c1c4c5);
+    margin: 0;
+    font-size: 1.2rem;
+    border-radius: 10px;
+  }
+}
 
 /* NavBar */
 
@@ -239,11 +257,13 @@ header {
       .profile-img-lg {
         border-radius: 50%;
         width: 40px;
+        height: 40px;
       }
 
       .profile-img-sm {
         border-radius: 50%;
         width: 30px;
+        height: 30px;
       }
 
       .profile-name-content {
@@ -405,7 +425,7 @@ header {
       cursor: pointer;
 
       .bar {
-          background: linear-gradient(to right, $primary_color1, $primary_color2);
+          background: linear-gradient(to right, $primary_color1, #a54002);
           width: 100%;
           height: 4px;
           border-radius: 0.8rem;
@@ -438,6 +458,7 @@ header {
       .profile-img-sm {
         padding-left: 0;
         width: 50px;
+        height: 50px;
       }
 
       .profile-name {

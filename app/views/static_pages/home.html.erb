@@ -4,7 +4,6 @@
       <div class="categories-article-items">
         <div class="featured-article-content cat-content">
           <%= link_to article_path(Article.featured_article.id) do %>
-
             <div class="image featured-article-image">
               <%= image_tag(Article.featured_article.featured_image_url, alt: Article.featured_article.title)%>
             </div>
@@ -35,7 +34,6 @@
         </div>
       </div>
     </section>
-
     <section class="main-section mt-5 mt-md-0">
       <div class="row no-gutters">
         <div class="col-12 col-md-8 px-4">
@@ -47,7 +45,6 @@
               <div class="spotlight-items">
                 <div class="spotlight-items-article">
                   <% @articles.take(2).each do |article| %>
-
                     <div class="cat-content card">
                       <%= link_to article_path(article) do %>
                         <div class="cat-infos">
@@ -56,7 +53,6 @@
                           <div class="cat-image card-img-top">
                             <%= image_tag(article.featured_image_url, alt: article.title ) %>
                           </div>
-
                           <div class="cat-title">
                             <h4 class="cat-name"><strong><%= article.category.name.capitalize %></strong></h4>
                             <strong><%= article.title %></strong>
@@ -78,13 +74,11 @@
                         </div>
                       <% end %>
                     </div>
-
                   <% end %>
                 </div>
               </div>
             </div>
           <% end %>
-
           <div class="all-category">
             <% @categories.each do |category_section| %>
               <% if category_section.articles.any? %>
@@ -104,9 +98,7 @@
                                 <div class="cat-image card-img-top">
                                   <%= image_tag(category_article.featured_image_url, alt: category_article.title ) %>
                                 </div>
-
                                 <div class="cat-title">
-
                                   <strong><%= category_article.title %></strong>
                                 </div>
                               </div>
@@ -135,18 +127,14 @@
             <% end %>
           </div>
         </div>
-
         <%= render 'articles/suggested_articles' %>
-
       </div>
-
       <div class="row no-gutters">
         <div class="col-12">
           <div class="editors-articles">
             <div class="editors-pick-header">
               <h2 class="text-center">Editor's Picks</h2>
             </div>
-
             <div class="all-editors-picks">
               <% @articles.sample(5).each do |picks| %>
                 <div class="editors-picks">
@@ -161,10 +149,8 @@
                                 <div class="cat-image editors-pick-img card-img-top">
                                   <%= image_tag(picks.featured_image_url, alt: picks.title ) %>
                                 </div>
-
                                 <div class="cat-title">
                                   <h4 class="cat-name"><strong><%= picks.category.name.capitalize %></strong></h4>
-
                                 </div>
                               </div>
                               <div class="card-body cat-text">
@@ -178,13 +164,10 @@
                 </div>
               <% end %>
             </div>
-
           </div>
         </div>
       </div>
-
     </section>
-
   <% else %>
     <h2 class="display-5 text-center no-article-text">There is no current article. You can create one!</h2>
   <% end %>

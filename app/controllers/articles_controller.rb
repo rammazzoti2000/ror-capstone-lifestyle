@@ -1,4 +1,5 @@
 class ArticlesController < ApplicationController
+
   def new
     @article = Article.new
   end
@@ -15,14 +16,15 @@ class ArticlesController < ApplicationController
   end
 
   def create
-    # @article = Article.new
     @article = current_user.articles.build(article_params)
     if params[:save_button]
       @article.status = 'saved'
       if @article.save
         flash['alert-success'] = 'Article saved successfully!'
+        render :edit
+      else
+        render :new
       end
-      render :new
     elsif params[:publish_button]
       @article.status = 'published'
       if @article.save
@@ -73,7 +75,8 @@ class ArticlesController < ApplicationController
   end
 
   def increment
-    @pageview = Article.where(author_id: current_user, id: params[:id]).first_or_create
+    @pageview = Article.where(author_id: current_user,
+                              id: params[:id]).first_or_create
     @pageview.increment!(:views)
   end
 

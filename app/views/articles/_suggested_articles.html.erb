@@ -1,0 +1,42 @@
+<div class="col-12 col-md-4 px-3 px-md-5 mb-5 mb-md-0">
+  <div class="suggested-articles mt-3 text-center">
+    <h1 class="section-header pt-0">Suggested Articles</h1>
+    <% @articles.sample(3).each do |suggested_articles| %>
+      <%= link_to article_path(suggested_articles.id), class: "suggested-article-link" do %>
+        <div class="card my-4 m-3">
+          <div class="image ripple suggested-image">
+            <%= image_tag(suggested_articles.featured_image_url, alt: suggested_articles.title, class: "card-img-top")%>
+          </div>
+          <div class="card-body">
+            <h5 class="card-title"><%= suggested_articles.category.name.capitalize %></h5>
+            <p class="card-text"><%= suggested_articles.title %></p>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+
+  <div class="popular-articles">
+    <div class="list-group">
+      <div class="list-group-item list-group-item-action header">
+
+        <h1 class="card-title">Most Popular</h1>
+      </div>
+      <% Article.most_popular_articles.each_with_index do |popular_articles, index| %>
+        <%= link_to article_path(popular_articles), class: "list-group-item list-group-item-action list" do %>
+          <div class="popular-article-item d-flex flex-column">
+            <p class="card-text"><%= popular_articles.title %></p>
+            <div class="views d-flex align-items-center align-self-end">
+              <span class="view">
+                  <%= fa_icon('eye') %> &nbsp; <span class="view-no"><%= popular_articles.views %></span>
+              </span>
+              <span class="comment">
+                <%= fa_icon('comment-alt') %> &nbsp; <span class="view-no"><%= popular_articles.comments.count %></span>
+              </span>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>

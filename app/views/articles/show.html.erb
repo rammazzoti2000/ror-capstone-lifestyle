@@ -5,7 +5,7 @@
         <div class="article-card">
           <h1 class="card-cat"><%= @article.category.name.upcase %></h1>
           <h1 class="card-title"><%= @article.title.titleize %></h1>
-          <div class="article-info">
+          <div class="article-info d-md-flex flex-column flex-sm-column flex-md-row">
             <div class="info1">
               <div class="author-name">
                 By <%= @article.author.name.titleize %>
@@ -14,7 +14,7 @@
                 <%= @article.created_at.strftime("%b %-d %Y")%>
               </div>
             </div>
-            <div class="info2">
+            <div class="info2 d-flex justify-content-start mt-3">
               <div class="view">
                 <%= fa_icon('eye') %> &nbsp; <span class="view-no"><%= @article.views %></span>
               </div>
@@ -35,11 +35,23 @@
             <div class="card-text"><%= @article.text.html_safe %></div>
           </div>
           <div class="author-social-link">
-          <hr>
-            <div class="author-social-icons">
-              <%= fa_icon('facebook-square', type: :brand, size: '3x' ) %>
-              <%= fa_icon('linkedin', type: :brand, size: '3x' ) %>
-              <%= fa_icon('twitter-square', type: :brand, size: '3x' ) %>
+            <hr>
+            <div class="author-info d-flex flex-wrap justify-content-between align-items-center">
+              <div class="article-tags">
+                Tags:
+                <% @article.tags.each_with_index do |tag, index| %>
+                  <% if index == (@article.tags.length-1) %>
+                    <%= "#{tag.name}." %>
+                  <% else %>
+                    <%= "#{tag.name}," %>
+                  <% end %>
+                <% end %>
+              </div>
+              <div class="author-social-icons">
+                <%= link_to fa_icon('facebook-square', type: :brand, size: '3x' ), @article.author.facebook, class: "facebook" %>
+                <%= link_to fa_icon('linkedin', type: :brand, size: '3x' ), @article.author.facebook, class: "linkedin" %>
+                <%= link_to fa_icon('twitter-square', type: :brand, size: '3x' ), @article.author.twitter, class: "twitter" %>
+              </div>
             </div>
           <hr>
           </div>
@@ -110,10 +122,10 @@
                   <p class="card-text"><%= popular_articles.title %></p>
                   <div class="views d-flex align-items-center align-self-end">
                     <span class="view">
-                       <%= fa_icon('eye') %> &nbsp; <span class="view-no">3</span>
+                       <%= fa_icon('eye') %> &nbsp; <span class="view-no"><%= @article.views %></span>
                     </span>
                     <span class="comment">
-                     <%= fa_icon('comment-alt') %> &nbsp; <span class="view-no">10</span>
+                     <%= fa_icon('comment-alt') %> &nbsp; <span class="view-no"><%= @article.comments.count %></span>
                     </span>
                   </div>
                 </div>

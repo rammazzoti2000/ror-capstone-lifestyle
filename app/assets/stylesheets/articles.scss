@@ -4,7 +4,7 @@
 
 .button {
   border-radius: 20px;
-  background: #eb3007;
+  background: #fd6000;
   font-size: 1.3rem;
   font-weight: bold;
   padding: 0.7rem 1rem;
@@ -29,8 +29,24 @@
     .group {
       margin: 3rem 0;
 
-      .form-control {
+      .cat-select,
+      .tag-select {
+        height: 42px;
+        border: none;
+        border-top-right-radius: 20px;
+        border-bottom-right-radius: 20px;
+        outline: none;
         font-size: 1.5rem;
+        color: #999;
+      }
+
+      .input-group-text i {
+        font-size: 1.7rem;
+        color: #444;
+      }
+
+      .tag-info{
+        font-size: 1.2rem;
       }
 
       .input {
@@ -66,7 +82,7 @@
 
   .fr-toolbar,
   .input-group-text {
-    background: #eb3107ea;
+    background: #f9792b;
   }
 
   .second-toolbar {
@@ -180,7 +196,8 @@
   }
 
   .card-text span {
-    font-size: 1.4rem!important;
+    font-size: 1.7rem!important;
+    font-family: Georgia, 'Times New Roman', Times, serif!important;
   }
 
   .author-social-link {
@@ -248,9 +265,13 @@
     .comment-body span {
       font-weight: lighter;
       text-transform: uppercase;
-      // margin-top: 0.8rem;
     }
   }
+
+  .article-tags {
+    font-size: 1.4rem;
+  }
+}
 
   .suggested-articles {
     .card-title {
@@ -298,16 +319,16 @@
   }
 
   .view,
-  .comment {
+  .comment,
+  .min-read {
     display: flex;
     align-items: center;
-    margin: 0 1rem;
+    margin: 0 0.7rem;
 
     i {
       color: #eb3007;
       font-size: 1.5rem;
     }
   }
-}
 
 // $font-subheader: 'Vollkorn', serif;

@@ -1,1 +1,50 @@
-<%= @user.name %>, <%= @user.email %>
+
+<div class="signup-login-forms">
+  <div class="form-contents">
+    <div class="login-html">
+      <div class="login-form">
+        <div class="sign-up-form">
+          <%= form_for(@user) do |f| %>
+            <div class="group">
+              <%= f.label :name, class: 'label'%>
+              <%= f.text_field :name, class: "input", disabled: true %>
+            </div>
+            <div class="group">
+              <%= f.label :username, class: 'label'%>
+              <%= f.text_field :username, class: "input", disabled: true %>
+            </div>
+            <div class="group">
+              <%= f.label :email, class: 'label'%>
+              <%= f.email_field :email, class: "input", disabled: true %>
+            </div>
+            <div class="group">
+              <%= f.label :twitter, 'Twitter Profile Link', class: 'label'%>
+              <%= f.text_field :twitter, class: "input", disabled: true %>
+            </div>
+            <div class="group">
+              <%= f.label :linkedin, 'LinkedIn Profile Link', class: 'label'%>
+              <%= f.text_field :linkedin, class: "input", disabled: true %>
+            </div>
+            <div class="group">
+              <%= f.label :facebook, 'Facebook Profile Link', class: 'label'%>
+              <%= f.text_field :facebook, class: "input", disabled: true %>
+            </div>
+            <div class="group">
+              <%= link_to "Edit Profile", edit_user_path(@user), class: "button", id: "edit-profile" %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+      <div class="article-featured-image" id="article-featured">
+      <% unless @user.avatar.present? %>
+        <%= gravatar_for(@user) %>
+      <% else %>
+        <%= image_tag(@user.avatar_url, class: "avatar")%>
+      <% end %>
+
+      </div>
+
+    </div>
+  </div>

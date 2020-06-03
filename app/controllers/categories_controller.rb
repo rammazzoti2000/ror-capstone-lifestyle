@@ -1,4 +1,5 @@
 class CategoriesController < ApplicationController
+  
   def index
     cat = params[:category]
     @category = Category.find_by(name: cat)

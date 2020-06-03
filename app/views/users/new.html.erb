@@ -8,14 +8,9 @@
 </div>
 <div class="signup-login-forms">
   <div class="form-contents">
-
     <div class="login-html">
-      <%# <input id="sign-in" type="radio" name="tab" class="sign-in"> %>
       <%= link_to "Log In", login_path, class: "sign-in tab"%>
-      <%# <label for="sign-in" class="tab">Log In</label> %>
-      <%# <input id="sign-up" type="radio" name="tab" class="sign-up" checked> %>
       <%= link_to "Register", signup_path, class: "sign-up tab active"%>
-      <%# <label for="sign-up" class="tab">Register</label> %>
       <div class="login-form">
         <div class="sign-up-form">
           <%= form_for(@user) do |f| %>
