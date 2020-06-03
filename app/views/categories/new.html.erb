@@ -1,0 +1,21 @@
+<div class="main-content new-article">
+  <div class="article-form">
+
+    <%= form_for(@category) do |f| %>
+      <div class="category-form">
+        <h3>Category</h3>
+        <div class="group">
+          <%= f.label :name %>
+          <%= f.text_field :name, maxlength: "10", class: "input"%>
+        </div>
+        <div class="group">
+          <%= f.label :priority %>
+          <%= f.text_field :priority, class: "input" %>
+        </div>
+        <div class="group">
+          <%= f.submit "Create Category", class: "btn btn-primary" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div> 

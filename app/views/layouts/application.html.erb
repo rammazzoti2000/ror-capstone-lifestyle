@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Sleezy</title>
+    <title>Petify</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    
+
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -13,11 +13,11 @@
 
   <body>
     <%= render 'layouts/header' %>
+    <%= render 'layouts/flash' %>
 
     <div class="container-wrapper">
       <%= render 'layouts/flash' %>
         <%= yield %>
-
       <%= render "layouts/footer" %>
     </div>
   </body>
