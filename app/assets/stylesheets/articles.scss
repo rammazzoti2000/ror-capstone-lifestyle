@@ -52,7 +52,6 @@
       .input {
         border: none;
         font-size: 3rem;
-        font-size: 2rem;
         padding: 12px 20px;
         border-radius: 25px;
         background: rgba(255, 255, 255, 0.2);
@@ -65,6 +64,14 @@
           color: #7575759d;
         }
       }
+
+      .article-text-area {
+        font-size: 1.7rem;
+
+      &::placeholder {
+        font-size: 1.7rem;
+      }
+    }
 
 
     }
@@ -265,6 +272,7 @@
     .comment-body span {
       font-weight: lighter;
       text-transform: uppercase;
+      // margin-top: 0.8rem;
     }
   }
 
@@ -330,5 +338,4 @@
       font-size: 1.5rem;
     }
   }
-
 // $font-subheader: 'Vollkorn', serif;

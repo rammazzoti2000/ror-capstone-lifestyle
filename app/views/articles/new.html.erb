@@ -20,7 +20,8 @@
             <%= f.text_field :title, autocomplete: 'off', maxlength: "60", class: "input", placeholder: "Title" %>
           </div>
           <div class="group">
-            <%= f.text_area :text,class: "input", id: "article-text-area" %>
+            <%= f.text_area :text,class: "input article-text-area", id: "article-text-area", placeholder: "Type here your thoughts" %>
+            <!-- <trix-editor input="article-text-area"></trix-editor> -->
           </div>
 
         </div>
@@ -35,6 +36,7 @@
               Add Featured Image
             </div>
           </div>
+
            <div class="group">
             <div class="input-group mb-2">
               <div class="input-group-prepend">
@@ -69,8 +71,8 @@
 <script type="text/javascript" src = "../../assets/froala_editor.pkgd.min.js"></script>
 
 <script>
- new FroalaEditor('#article-text-area', {
-    placeholderText: 'Tell your story...',
+  new FroalaEditor('#article-text-area', {
+    placeholderText: 'Type here your thoughts...',
     heightMin: 100,
     heightMax: 300,
     height: 300

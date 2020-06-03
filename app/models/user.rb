@@ -12,10 +12,10 @@ class User < ApplicationRecord
   validates :name,  presence: true, length: { maximum: 50 }
   validates :username, presence: true, length: { maximum: 50 },
                        uniqueness: { case_sensitive: false }
-  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i.freeze
   validates :email, presence: true, length: { maximum: 255 },
-                    format: { with: VALID_EMAIL_REGEX },
-                    uniqueness: { case_sensitive: false }
+                    uniqueness: { case_sensitive: false },
+                    format: { with: VALID_EMAIL_REGEX }
   validates :password, presence: true, length: { minimum: 6 }
 
   mount_uploader :avatar, AvatarUploader

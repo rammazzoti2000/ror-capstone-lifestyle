@@ -12,7 +12,6 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    @user.avatar = gravatar_for(@user)
     if @user.save
       create_session(@user)
       create_cookies(@user)

@@ -1,7 +1,7 @@
 <div class="main-content article-page container">
   <div class="category-articles-all">
     <div class="row">
-      <div class="col-12 col-md-8">
+      <div class="col-12 col-md-9">
         <div class="article-card">
           <h1 class="card-cat"><%= @article.category.name.upcase %></h1>
           <h1 class="card-title"><%= @article.title.titleize %></h1>
@@ -92,7 +92,7 @@
           </div>
         </div>
       </div>
-      <div class="col-12 col-md-4">
+      <div class="col-12 col-md-3">
         <div class="suggested-articles mt-3 text-center">
           <h1 class="section-header">Suggested Articles</h1>
           <% @articles.take(2).each do |suggested_articles| %>

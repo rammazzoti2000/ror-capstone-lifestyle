@@ -181,7 +181,7 @@
   .about-section,
   .footer {
     background: #4e443e;
-    transform: translateY(61px);
+    transform: translateY(15rem);
     color: #fff;
 
     .about-us,
@@ -296,6 +296,11 @@
     border: 0!important;
   }
 
+  .search-form {
+    display: flex;
+    margin-right: 10px;
+  }
+
 
 // Media Queries
 
@@ -323,6 +328,7 @@
               font-size: 1.5rem;
             }
           }
+
         }
       }
 
@@ -340,13 +346,15 @@
         .cat-image.editors-pick-img img {
             max-height: 180px;
         }
-      }
+    }
   }
 }
 
 
 @media only screen and (max-width: 530px) {
   .main-content {
+
+
     .categories-article {
       .categories-first-article {
         grid-template-columns: repeat(1, 1fr );
@@ -371,6 +379,7 @@
       .all-editors-picks {
         grid-template-columns: repeat(1, 1fr);
         grid-column-gap: 0.8rem;
+
       }
     }
   }

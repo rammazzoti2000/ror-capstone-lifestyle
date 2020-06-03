@@ -16,10 +16,10 @@
               <div class="categories-links section-part">
               <h3 class="header">Categories</h3>
                 <ul class="list-group list-group-flush">
-                <% Category.all.each do |cat| %>
-                <%= link_to categories_path(category: cat.name), class: "cat-links" do %>
-                  <li class="list-group-item"><%= cat.name.capitalize %></li>
-                <% end %>
+                  <% Category.all.each do |cat| %>
+                    <%= link_to categories_path(category: cat.name), class: "cat-links" do %>
+                      <li class="list-group-item"><%= cat.name.capitalize %></li>
+                    <% end %>
                   <% end %>
                 </ul>
               </div>
@@ -31,10 +31,10 @@
                 <input type="email" class="input" placeholder="Enter your email here">
                 <button type="submit" class="input">Subscribe</button>
               </form>
-              </div>
             </div>
           </div>
         </div>
+      </div>
     </section>
     <footer class="footer">
       <hr>
@@ -55,7 +55,7 @@
             </span>
           </div>
         </div>
-     </div>
+      </div>
     </footer>
   </div>
 <% end %>

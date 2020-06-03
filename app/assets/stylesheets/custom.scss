@@ -32,7 +32,27 @@ html {
 img {
   max-width: 100%;
   width: 100%;
-  height: auto;
+  // height: auto;
+  height: 150px;
+  object-fit: cover;
+}
+
+#comment-name {
+  color: #333;
+}
+
+.profile-img-lg {
+  height: auto!important;
+}
+
+.suggested-articles img{
+  height: 120px;
+  object-fit: cover;
+}
+
+.editors-picks-article img {
+  height: 120px!important;
+  object-fit: cover;
 }
 
 ul li{

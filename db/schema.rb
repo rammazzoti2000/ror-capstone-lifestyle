@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_02_084710) do
+ActiveRecord::Schema.define(version: 2020_06_03_142320) do
 
   create_table "articles", force: :cascade do |t|
     t.string "title"
@@ -79,6 +79,7 @@ ActiveRecord::Schema.define(version: 2020_06_02_084710) do
     t.string "facebook"
     t.string "linkedin"
     t.string "avatar"
+    t.boolean "admin", default: false
   end
 
   create_table "votes", force: :cascade do |t|
