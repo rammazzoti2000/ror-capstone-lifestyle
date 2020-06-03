@@ -9,7 +9,8 @@ class ArticlesController < ApplicationController
     @comment = Comment.new
     @categories = Category.all
 
-    @pageview = Article.where(author_id: current_user, id: params[:id]).first_or_create
+    @pageview = Article.where(author_id: current_user,
+                              id: params[:id]).first_or_create
     @pageview.increment!(:views)
   end
 
@@ -33,6 +34,44 @@ class ArticlesController < ApplicationController
     end
   end
 
+   def edit
+    @article = Article.find(params[:id])
+  end
+
+  def update
+    @article = Article.find(params[:id])
+    if params[:save_button]
+      @article.status = 'saved'
+      if @article.update(article_params)
+        redirect_to(request.referer)
+        flash['alert-success'] = 'Article saved successfully!'
+      else
+        render :edit
+      end
+    elsif params[:publish_button]
+      @article.status = 'published'
+      if @article.update(article_params)
+        flash['alert-success'] = 'Article published successfully!'
+        redirect_to article_path(@article)
+      else
+        render :edit
+      end
+    end
+  end
+
+  def published_articles
+  end
+
+  def saved_articles
+  end
+
+  def bookmarks
+  end
+
+  def search
+    @search_articles = Article.search_article(params[:q])
+  end
+
   def increment
     @pageview = Article.where(author_id: current_user, id: params[:id]).first_or_create
     @pageview.increment!(:views)
@@ -41,6 +80,8 @@ class ArticlesController < ApplicationController
   private
 
     def article_params
-      params.required(:article).permit(:title, :text, :tag, :featured_image, :category_id, :author_id, :status)
+      params.required(:article).permit(:title, :text, :tag,
+                                       :featured_image, :tag_list,
+                                       :category_id, :author_id, :status)
     end
 end

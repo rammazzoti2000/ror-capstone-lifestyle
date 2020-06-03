@@ -1,182 +1,191 @@
 <div class="main-content">
-  <section class="categories-article">
-    <div class="categories-article-items">
-      <div class="featured-article-content cat-content">
-        <%= link_to article_path(Article.featured_article.id) do %>
+  <% if @articles.any? %>
+    <section class="categories-article">
+      <div class="categories-article-items">
+        <div class="featured-article-content cat-content">
+          <%= link_to article_path(Article.featured_article.id) do %>
 
-          <div class="image featured-article-image">
-            <%= image_tag(Article.featured_article.featured_image_url, alt: Article.featured_article.title)%>
-          </div>
-          <div class="cat-title">
-            <h4 class="cat-name"><strong><%= Article.featured_article.category.name.capitalize %></strong></h4>
-            <span><strong><%= Article.featured_article.title %></strong><span>
-          </div>
-        <% end %>
-      </div>
-      <div class="categories-first-article">
-        <% @categories.each do |category| %>
-          <% if category.articles.present? %>
-            <div class="cat-content">
-              <%= link_to categories_path(category: category.name) do %>
-                <div class="image ripple">
-                </div>
-                <div class="cat-image">
-                  <%= image_tag(Article.category_first_article(category).featured_image_url, alt: Article.category_first_article(category).title ) %>
-                </div>
-                <div class="cat-title">
-                  <h4 class="cat-name"><strong><%= category.name.capitalize %></strong></h4>
-                  <strong><%= Article.category_first_article(category).title %></strong>
-                </div>
-              <% end %>
+            <div class="image featured-article-image">
+              <%= image_tag(Article.featured_article.featured_image_url, alt: Article.featured_article.title)%>
+            </div>
+            <div class="cat-title">
+              <h4 class="cat-name"><strong><%= Article.featured_article.category.name.capitalize %></strong></h4>
+              <span><strong><%= Article.featured_article.title %></strong><span>
             </div>
           <% end %>
-        <% end %>
-      </div>
-    </div>
-  </section>
-  <section class="main-section">
-    <div class="row no-gutters">
-      <div class="col-12 col-md-8 px-4">
-        <div class="todays-spotlight mt-4">
-          <div class="todays-spotlight-header">
-            <h2>Today's Spotlight</h2>
-          </div>
-          <div class="spotlight-items">
-            <div class="spotlight-items-article">
-              <% @categories.take(2).each do |category| %>
-                <% if category.articles.present? %>
-                  <div class="cat-content card">
-                    <%= link_to categories_path(category: category.name) do %>
-                      <div class="cat-infos">
-                        <div class="image ripple">
-                        </div>
-                        <div class="cat-image card-img-top">
-                          <%= image_tag(Article.category_first_article(category).featured_image_url, alt: Article.category_first_article(category).title ) %>
-                        </div>
-
-                        <div class="cat-title">
-                          <h4 class="cat-name"><strong><%= category.name.capitalize %></strong></h4>
-                          <strong><%= Article.category_first_article(category).title %></strong>
-                        </div>
-                      </div>
-                      <div class="card-body cat-text">
-                        <p><%= string_length Article.category_first_article(category).text, 80 %></p>
-                          <div class="attr">
-                            <span class="view">
-                              <%= fa_icon('eye') %> &nbsp; <span class="view-no"><%= Article.category_first_article(category).views %></span>
-                            </span>
-                            <span class="comment">
-                              <%= fa_icon('comment-alt') %> &nbsp; <span class="view-no"><%= Article.category_first_article(category).comments.count %></span>
-                            </span>
-                            <span class="min-read">
-                              <%= min_read(Article.category_first_article(category).text) %> mins read
-                            </span>
-                        </div>
-                      </div>
-                    <% end %>
+        </div>
+        <div class="categories-first-article">
+          <% @categories.each do |category| %>
+            <% if category.articles.present? %>
+              <div class="cat-content">
+                <%= link_to categories_path(category: category.name) do %>
+                  <div class="image ripple">
+                  </div>
+                  <div class="cat-image">
+                    <%= image_tag(Article.category_first_article(category).featured_image_url, alt: Article.category_first_article(category).title ) %>
+                  </div>
+                  <div class="cat-title">
+                    <h4 class="cat-name"><strong><%= category.name.capitalize %></strong></h4>
+                    <strong><%= Article.category_first_article(category).title %></strong>
                   </div>
                 <% end %>
-              <% end %>
-            </div>
-          </div>
+              </div>
+            <% end %>
+          <% end %>
         </div>
+      </div>
+    </section>
 
-        <div class="all-category">
-          <% @categories.each do |category_section| %>
-            <div class="all-category-articles">
+    <section class="main-section mt-5 mt-md-0">
+      <div class="row no-gutters">
+        <div class="col-12 col-md-8 px-4">
+          <% if @articles.any? %>
+            <div class="todays-spotlight mt-4">
               <div class="todays-spotlight-header">
-                <h2><%= category_section.name %></h2>
+                <h2>Today's Spotlight</h2>
               </div>
               <div class="spotlight-items">
                 <div class="spotlight-items-article">
-                  <% category_section.articles.limit(2).each do |category_article| %>
-                    <% if category_section.articles.present? %>
-                      <div class="cat-content card">
-                        <%= link_to article_path(category_article.id) do %>
-                          <div class="cat-infos">
-                            <div class="image ripple">
-                            </div>
-                            <div class="cat-image card-img-top">
-                              <%= image_tag(category_article.featured_image_url, alt: category_article.title ) %>
-                            </div>
+                  <% @articles.take(2).each do |article| %>
 
-                            <div class="cat-title">
+                    <div class="cat-content card">
+                      <%= link_to article_path(article) do %>
+                        <div class="cat-infos">
+                          <div class="image ripple">
+                          </div>
+                          <div class="cat-image card-img-top">
+                            <%= image_tag(article.featured_image_url, alt: article.title ) %>
+                          </div>
 
-                              <strong><%= category_article.title %></strong>
-                            </div>
+                          <div class="cat-title">
+                            <h4 class="cat-name"><strong><%= article.category.name.capitalize %></strong></h4>
+                            <strong><%= article.title %></strong>
                           </div>
-                          <div class="card-body cat-text">
-                            <p><%= string_length category_article.text, 80 %></p>
-                            <div class="attr">
-                              <span class="view">
-                                <%= fa_icon('eye') %> &nbsp; <span class="view-no"><%= category_article.views %></span>
-                              </span>
-                              <span class="comment">
-                                <%= fa_icon('comment-alt') %> &nbsp; <span class="view-no"><%= category_article.comments.count %></span>
-                              </span>
-                              <span class="min-read">
-                                <%= min_read(category_article.text) %> mins read
-                              </span>
-                            </div>
+                        </div>
+                        <div class="card-body cat-text">
+                          <p><%= string_length(article.text, 80) %></p>
+                          <div class="attr">
+                            <span class="view">
+                              <%= fa_icon('eye') %> &nbsp; <span class="view-no"><%= article.views %></span>
+                            </span>
+                            <span class="comment">
+                              <%= fa_icon('comment-alt') %> &nbsp; <span class="view-no"><%= article.comments.count %></span>
+                            </span>
+                            <span class="min-read">
+                              <%= min_read(article.text) %> mins read
+                            </span>
                           </div>
-                        <% end %>
-                      </div>
-                    <% end %>
+                        </div>
+                      <% end %>
+                    </div>
+
                   <% end %>
                 </div>
               </div>
             </div>
           <% end %>
-        </div>
-      </div>
 
-      <%= render 'articles/suggested_articles' %>
+          <div class="all-category">
+            <% @categories.each do |category_section| %>
+              <% if category_section.articles.any? %>
+                <div class="all-category-articles">
+                  <div class="todays-spotlight-header">
+                    <h2><%= category_section.name %></h2>
+                  </div>
+                  <div class="spotlight-items">
+                    <div class="spotlight-items-article">
+                      <% category_section.articles.limit(2).each do |category_article| %>
+                        <% if category_section.articles.present? %>
+                          <div class="cat-content card">
+                            <%= link_to article_path(category_article.id) do %>
+                              <div class="cat-infos">
+                                <div class="image ripple">
+                                </div>
+                                <div class="cat-image card-img-top">
+                                  <%= image_tag(category_article.featured_image_url, alt: category_article.title ) %>
+                                </div>
 
-    </div>
-    <div class="row">
-      <div class="col-12">
-       <div class="editors-articles">
-          <div class="editors-pick-header">
-            <h2 class="text-center">Editor's Picks</h2>
-          </div>
+                                <div class="cat-title">
 
-          <div class="all-editors-picks">
-            <% @categories.each do |editor_article| %>
-              <div class="editors-picks">
-                <div class="spotlight-items">
-                  <div class="editors-picks-article">
-                    <% editor_article.articles.limit(1).each do |picks| %>
-                      <% if picks.present? %>
-                        <div class="cat-content">
-                          <%= link_to article_path(picks) do %>
-                            <div class="cat-infos">
-                              <div class="image ripple">
+                                  <strong><%= category_article.title %></strong>
+                                </div>
                               </div>
-                              <div class="cat-image editors-pick-img card-img-top">
-                                <%= image_tag(picks.featured_image_url, alt: picks.title ) %>
+                              <div class="card-body cat-text">
+                                <p><%= string_length category_article.text, 80 %></p>
+                                <div class="attr">
+                                  <span class="view">
+                                    <%= fa_icon('eye') %> &nbsp; <span class="view-no"><%= category_article.views %></span>
+                                  </span>
+                                  <span class="comment">
+                                    <%= fa_icon('comment-alt') %> &nbsp; <span class="view-no"><%= category_article.comments.count %></span>
+                                  </span>
+                                  <span class="min-read">
+                                    <%= min_read(category_article.text) %> mins read
+                                  </span>
+                                </div>
                               </div>
-
-                              <div class="cat-title">
-                                <h4 class="cat-name"><strong><%= editor_article.name.capitalize %></strong></h4>
-
-                              </div>
-                            </div>
-                            <div class="card-body cat-text">
-                               <p class="title"><strong><%= picks.title %></strong></p>
-                            </div>
-                          <% end %>
-                        </div>
+                            <% end %>
+                          </div>
+                        <% end %>
                       <% end %>
-                    <% end %>
+                    </div>
                   </div>
                 </div>
-              </div>
+              <% end %>
             <% end %>
           </div>
         </div>
-      </div>
-      </div>
-    </div>
-  </section>
 
+        <%= render 'articles/suggested_articles' %>
+
+      </div>
+
+      <div class="row no-gutters">
+        <div class="col-12">
+          <div class="editors-articles">
+            <div class="editors-pick-header">
+              <h2 class="text-center">Editor's Picks</h2>
+            </div>
+
+            <div class="all-editors-picks">
+              <% @articles.sample(5).each do |picks| %>
+                <div class="editors-picks">
+                  <div class="spotlight-items">
+                    <div class="editors-picks-article">
+                        <% if picks.present? %>
+                          <div class="cat-content">
+                            <%= link_to article_path(picks) do %>
+                              <div class="cat-infos">
+                                <div class="image ripple">
+                                </div>
+                                <div class="cat-image editors-pick-img card-img-top">
+                                  <%= image_tag(picks.featured_image_url, alt: picks.title ) %>
+                                </div>
+
+                                <div class="cat-title">
+                                  <h4 class="cat-name"><strong><%= picks.category.name.capitalize %></strong></h4>
+
+                                </div>
+                              </div>
+                              <div class="card-body cat-text">
+                                <p class="title"><strong><%= picks.title %></strong></p>
+                              </div>
+                            <% end %>
+                          </div>
+                        <% end %>
+                    </div>
+                  </div>
+                </div>
+              <% end %>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+  <% else %>
+    <h2 class="display-5 text-center no-article-text">There is no current article. You can create one!</h2>
+  <% end %>
 </div>

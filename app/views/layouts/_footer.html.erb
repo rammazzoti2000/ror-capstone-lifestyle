@@ -1,38 +1,40 @@
-<section class="about-section">
-   <div class="section-container">
-     <div class="row">
-       <div class="col-12 col-md-4">
-         <div class="about-us section-part">
-           <h3 class="header">About us</h3>
-           <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium
-           doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore
-           veritatis et quasi architecto beatae vitae dicta sunt explicabo.
-           Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia</p>
+<% if controller_name != 'sessions' && controller_name != 'users'%>
+<div>
+ <section class="about-section">
+     <div class="section-container">
+       <div class="row">
+         <div class="col-12 col-md-4">
+           <div class="about-us section-part">
+             <h3 class="header">About us</h3>
+             <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium
+             doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore
+             veritatis et quasi architecto beatae vitae dicta sunt explicabo.
+             Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia</p>
+           </div>
          </div>
-       </div>
-       <div class="col-12 col-md-4">
-         <div class="categories-links section-part">
-         <h3 class="header">Categories</h3>
-           <ul class="list-group list-group-flush">
-            <% @categories.each do |cat| %>
-            <%= link_to categories_path(category: cat.name), class: "cat-links" do %>
-             <li class="list-group-item"><%= cat.name.capitalize %></li>
-           <% end %>
+         <div class="col-12 col-md-4">
+           <div class="categories-links section-part">
+           <h3 class="header">Categories</h3>
+             <ul class="list-group list-group-flush">
+             <% Category.all.each do |cat| %>
+             <%= link_to categories_path(category: cat.name), class: "cat-links" do %>
+               <li class="list-group-item"><%= cat.name.capitalize %></li>
              <% end %>
-           </ul>
+               <% end %>
+             </ul>
+           </div>
          </div>
-       </div>
-       <div class="col-12 col-md-4">
-         <div class="subscribe section-part">
-         <h3 class="header">Subscribe</h3>
-         <form>
-           <input type="email" class="input" placeholder="Enter your email here">
-           <button type="submit" class="input">Subscribe</button>
-         </form>
+         <div class="col-12 col-md-4">
+           <div class="subscribe section-part">
+           <h3 class="header">Subscribe</h3>
+           <form>
+             <input type="email" class="input" placeholder="Enter your email here">
+             <button type="submit" class="input">Subscribe</button>
+           </form>
+           </div>
          </div>
        </div>
      </div>
-   </div>
 
  </section>
  <footer class="footer">
@@ -57,4 +59,6 @@
      </div>
    </div>
  </footer>
+</div>
+<% end %>
  
