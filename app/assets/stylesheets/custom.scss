@@ -434,8 +434,9 @@ button.input {
 }
 
 .footer {
-  padding: 1rem;
-
+  padding: 2rem 1rem 1rem;
+  height: auto;
+  min-height: 80px;
   hr {
     border-top: 1px solid rgba(230, 225, 225, 0.1);
   }

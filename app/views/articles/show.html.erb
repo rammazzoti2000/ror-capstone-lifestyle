@@ -105,7 +105,7 @@
           <div class="suggested-article-content">
             <% article_random(@all_suggested_articles, 4).each do |suggested_articles| %>
               <%= link_to article_path(suggested_articles.id), class: "suggested-article-link" do %>
-                <div class="card my-4 m-3">
+                <div class="card mb-4">
                   <div class="image ripple suggested-image">
                     <%= image_tag(suggested_articles.featured_image_url, alt: suggested_articles.title, class: "card-img-top")%>
                   </div>

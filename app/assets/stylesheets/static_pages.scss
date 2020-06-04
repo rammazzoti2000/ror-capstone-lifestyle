@@ -3,7 +3,7 @@
 .main-content {
   transform: translateY(61px);
   min-height: 100vh;
-  margin-bottom: 62px;
+  margin-bottom: 100px;
 
   .no-article-text {
     transform: translateY(60px);
@@ -158,7 +158,7 @@
   }
 
   .editors-articles {
-    margin-bottom: 60px;
+    margin-bottom: 80px;
     .editors-pick-header h2{
       font-size: 3rem;
       color: #4e443e;
@@ -169,7 +169,7 @@
       grid-template-columns: repeat(4, 1fr);
       grid-column-gap: 2rem;
       margin: 0 auto;
-      width: 85%;
+      width: 89%;
 
       .cat-image.editors-pick-img,
       .cat-image.editors-pick-img img {

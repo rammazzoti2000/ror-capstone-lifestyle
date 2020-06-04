@@ -4,12 +4,12 @@
     <div class="suggested-article-content">
       <% article_random(@articles, 3).each do |suggested_articles| %>
         <%= link_to article_path(suggested_articles.id), class: "suggested-article-link" do %>
-          <div class="card my-4 m-3">
+          <div class="card mb-4">
             <div class="image ripple suggested-image">
               <%= image_tag(suggested_articles.featured_image_url, alt: suggested_articles.title, class: "card-img-top")%>
             </div>
             <div class="card-body">
-              <h5 class="card-title font-weight-bold"><%= suggested_articles.category.name.capitalize %></h5>
+              <h5 class="card-title font-weight-"><%= suggested_articles.category.name.capitalize %></h5>
               <p class="card-text"><%= suggested_articles.title %></p>
             </div>
           </div>

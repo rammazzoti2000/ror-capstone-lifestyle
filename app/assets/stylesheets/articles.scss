@@ -53,7 +53,7 @@
         border: none;
         font-size: 3rem;
         padding: 12px 20px 0;
-        border-radius: 25px;
+        border-radius: 0 0 10px 10px;
         background: rgba(255, 255, 255, 0.2);
         outline: none;
         color: #757575;
@@ -387,7 +387,7 @@
 
     .input,
     .input::placeholder {
-      font-size: 1.8rem!important;
+      font-size: 1.8rem !important;
     }
   }
 
