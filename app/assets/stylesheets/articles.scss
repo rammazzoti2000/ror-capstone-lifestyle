@@ -24,10 +24,10 @@
 
   .article-form {
     width: 90%;
-    margin: 0 auto;
+    margin: 0px auto 7%;
 
     .group {
-      margin: 3rem 0;
+      margin: 1rem 0;
 
       .cat-select,
       .tag-select {
@@ -45,19 +45,20 @@
         color: #444;
       }
 
-      .tag-info{
+      .tag-info {
         font-size: 1.2rem;
       }
 
       .input {
         border: none;
         font-size: 3rem;
-        padding: 12px 20px;
+        padding: 12px 20px 0;
         border-radius: 25px;
         background: rgba(255, 255, 255, 0.2);
         outline: none;
         color: #757575;
         width: 100%;
+        height: 69px;
 
         &::placeholder {
           font-size: 3rem;
@@ -69,6 +70,8 @@
         font-size: 1.7rem;
         background-color: #fff;
         min-height: 400px;
+        box-shadow: 0px 3px 10px 0px rgba(0, 0, 0, 0.3);
+        border-radius: 0 0 10px 10px;
 
       &::placeholder {
         font-size: 1.7rem;
@@ -110,7 +113,9 @@
     background: #f9792b;
     border-top-left-radius: 15px;
     border-top-right-radius: 15px;
-    font-size: 1.6rem;
+    font-size: 2rem;
+    box-shadow: 0px -1px 10px 0px rgba(0, 0, 0, 0.3);
+    margin-bottom: 0;
   }
 
   .drop-zone {
@@ -145,7 +150,6 @@
 .article-featured-image-edit {
   margin: 0 auto;
   position: relative;
-  width: 300px;
   height: 300px;
 }
 
@@ -160,7 +164,7 @@
 
   .card-cat {
     font-size: 1.5rem;
-    font-family: 'Vollkorn', serif;
+    font-family: 'Arial', serif;
     color: #eb3007;
   }
 
@@ -221,7 +225,7 @@
 
   .card-text span {
     font-size: 1.7rem!important;
-    font-family: Georgia, 'Times New Roman', Times, serif!important;
+    font-family: Georgia, 'Arial', Times, serif !important;
   }
 
   .author-social-link {
@@ -241,7 +245,7 @@
 
   .comment-card {
     border: none;
-    margin-top: 3rem;
+    margin: 3rem 0 5rem;
 
     .comment-header {
       display: flex;
@@ -249,12 +253,13 @@
       font-size: 1.8rem;
 
       .comment-title {
-        font-family: 'Vollkorn', serif;
+        font-family: 'Arial', serif;
       }
     }
 
     input:not(.button) {
       color: #333;
+      background-color: wheat;
     }
 
   }
@@ -268,7 +273,7 @@
 
     .input {
       width: 100%;
-      background: #fbf9f4;
+      background-color: wheat;
       border: none;
       border-radius: 8px;
       outline: none;
@@ -281,7 +286,7 @@
     .label,
     .comment-name {
       font-size: 1.5rem;
-      font-family: 'Vollkorn', serif;
+      font-family: 'Arial', serif;
     }
 
   .all-comments {
@@ -347,7 +352,7 @@
 
   .card-text {
     font-size: 1.6rem;
-    font-family: 'Vollkorn', serif;
+    font-family: 'Arial', serif;
   }
 
   .view,

@@ -24,25 +24,26 @@
               <h2 class="text-center">Add Featured Image</h2>
             </div>
           </div>
-
-          <div class="group">
-            <div class="input-group mb-2">
-              <div class="input-group-prepend">
-                <div class="input-group-text"><%= fa_icon('list-alt') %></div>
+          <div class="input-group-side">
+            <div class="group">
+              <div class="input-group mb-2">
+                <div class="input-group-prepend">
+                  <div class="input-group-text"><%= fa_icon('list-alt') %></div>
+                </div>
+                <%= collection_select(:article, :category_id, Category.all, :id, :name_with_caps, {prompt: "Select Category"}, {class: "form-control cat-select"}) %>
               </div>
-              <%= collection_select(:article, :category_id, Category.all, :id, :name_with_caps, {prompt: "Select Category"}, {class: "form-control cat-select"}) %>
             </div>
-          </div>
 
-          <div class="group">
-            <div class="input-group mb-2">
-              <div class="input-group-prepend">
-                <div class="input-group-text"><%= fa_icon('tag') %></div>
+            <div class="group">
+              <div class="input-group mb-2">
+                <div class="input-group-prepend">
+                  <div class="input-group-text"><%= fa_icon('tag') %></div>
+                </div>
+                <%= f.text_field :tag_list, placeholder: "Article Tags", class: "form-control tag-select" %>
+
               </div>
-              <%= f.text_field :tag_list, placeholder: "Article Tags", class: "form-control tag-select" %>
-
+              <small class="tag-info">Seperate tags with a comma</small>
             </div>
-            <small class="tag-info">Seperate tags with a comma</small>
           </div>
         </div>
       </div>

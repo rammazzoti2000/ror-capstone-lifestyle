@@ -3,12 +3,12 @@
 .main-content {
   transform: translateY(61px);
   min-height: 100vh;
+  margin-bottom: 62px;
 
   .no-article-text {
     transform: translateY(60px);
     padding: 6rem;
   }
-
 
   .categories-first-article {
     display: flex;
@@ -60,11 +60,16 @@
       padding: 1.2rem;
       color: #fff;
       font-size: 1.5rem;
+      strong {
+        background-color: rgba(0,0,0, 0.3);
+        padding: 10px;
+      }
 
       .cat-name {
         color: #fff;
         align-self: flex-start;
         position: relative;
+        top: 3px;
 
         &:after {
           content: "";
@@ -83,8 +88,8 @@
 
       p {
         color: #121212;
-        font-family: 'Vollkorn', serif;
-        font-size: 1.6rem;
+        font-family: $font-subheader;
+        font-size: 1.5rem;
       }
 
       .attr {
@@ -115,19 +120,21 @@
       h2 {
         background: #fd6000;
         display: inline;
-        font-size: 2.7rem;
-        font-family: 'Vollkorn', serif;
+        font-size: 2.6rem;
+        font-family: $font-subheader;
         padding: 0.7rem;
         color: #4e443e;
         position: relative;
+        border-radius: 13px 0;
+        box-shadow: -2px 6px 6px 2px rgba(0, 0, 0, 0.3);
 
         &::after {
           content: "";
           position: absolute;
-          bottom: -10px;
+          bottom: -5px;
           left: 0;
           width: 100%;
-          height: 5px;
+          height: 2px;
           background: #fd6000;
         }
 
@@ -151,9 +158,9 @@
   }
 
   .editors-articles {
+    margin-bottom: 60px;
     .editors-pick-header h2{
       font-size: 3rem;
-      font-family: 'Vollkorn', serif;
       color: #4e443e;
     }
 

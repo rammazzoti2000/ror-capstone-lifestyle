@@ -81,6 +81,9 @@ p {
 
   &.suggested-image {
     position: relative;
+    .card-title {
+      font-weight: bold;
+    }
   }
 
   &::before,
@@ -90,28 +93,6 @@ p {
     width: 100%;
     height: 100%;
     transition: all 2000ms ease-out;
-  }
-
-  &::before {
-    background: linear-gradient(45deg,rgba(255, 255, 255, 0.4), transparent, transparent);
-    top: -100%;
-    right: -100%;
-  }
-
-  &::after{
-    background: linear-gradient(-135deg,rgba(255, 255, 255, 0.4), transparent, transparent);
-    bottom: -100%;
-    left: -100%;
-  }
-
-  &:hover::before {
-    top: 100%;
-    right: 100%;
-  }
-
-  &:hover::after {
-    bottom: 100%;
-    left: 100%;
   }
 }
 
@@ -193,7 +174,7 @@ p {
     line-height: 1;
     font-size: 1.3rem;
     color: #6e6c6a;
-    font-family: $font_header;
+    font-family: 'Arial', serif;
     text-transform: uppercase;
 
       &:hover,
@@ -527,7 +508,7 @@ button.input {
     .nav-navbar.small {
       @include flex-align-item;
       justify-content: space-between;
-      padding: 1rem 2rem;
+      padding: 1rem;
       width: 100%;
       height: 50px;
     }
@@ -652,6 +633,7 @@ button.input {
     .categories-links,
     .subscribe {
       display: inline-block;
+      width: 100%;
     }
   }
   .footer-content {

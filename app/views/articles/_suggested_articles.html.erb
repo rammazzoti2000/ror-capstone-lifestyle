@@ -9,7 +9,7 @@
               <%= image_tag(suggested_articles.featured_image_url, alt: suggested_articles.title, class: "card-img-top")%>
             </div>
             <div class="card-body">
-              <h5 class="card-title"><%= suggested_articles.category.name.capitalize %></h5>
+              <h5 class="card-title font-weight-bold"><%= suggested_articles.category.name.capitalize %></h5>
               <p class="card-text"><%= suggested_articles.title %></p>
             </div>
           </div>

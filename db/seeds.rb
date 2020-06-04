@@ -42,7 +42,7 @@ end
 
     title = Faker::Book.title[0..50].titleize
     text = Faker::Lorem.paragraph(sentence_count: sen_count)
-    featured_image = File.open(File.join(Rails.root, "app/assets/images/sleezy-photos/#{categories[m]}-#{n+1}.jpg"))
+    featured_image = File.open(File.join(Rails.root, "app/assets/images/lifeopedia_pics/#{categories[m]}-#{n+1}.jpg"))
     category_id = m+1
     status = "published"
     author_id = n+1
@@ -62,7 +62,7 @@ end
 
     title = Faker::Book.title[0..50].titleize
     text = Faker::Lorem.paragraph(sentence_count: 60)
-    featured_image = File.open(File.join(Rails.root, "app/assets/images/sleezy-photos/#{categories[m]}-6.jpg"))
+    featured_image = File.open(File.join(Rails.root, "app/assets/images/lifeopedia_pics/#{categories[m]}-6.jpg"))
     category_id = m+1
     status = "saved"
     author_id = m+1
