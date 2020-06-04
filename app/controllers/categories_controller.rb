@@ -1,9 +1,10 @@
 class CategoriesController < ApplicationController
 
   def index
-    cat = params[:category]
+    cat = params[:name]
     @category = Category.find_by(name: cat)
     @categories = Category.all
+    @articles_per_category = Article.articles_per_category(@category.id)
   end
 
   def new
@@ -27,6 +28,6 @@ class CategoriesController < ApplicationController
   private
 
     def category_params
-      params.require(:category).permit(:name, :priority)
+      params.require(:category).permit(:name)
     end
 end

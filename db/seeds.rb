@@ -6,10 +6,10 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-User.create!(name:      "John Doe",
-             username:  "johndoe",
-             email:     "johndoe@gmail.com",
-             password:  "admin123",
+User.create!(name:      "Alexandru Bangau",
+             username:  "maxinova",
+             email:     "maxinova@gmail.com",
+             password:  "maxinova",
              admin:     true)
 
 categories = ['design', 'style', 'travel', 'food']
@@ -42,7 +42,7 @@ end
 
     title = Faker::Book.title[0..50].titleize
     text = Faker::Lorem.paragraph(sentence_count: sen_count)
-    featured_image = "https://sleezy-app.s3.amazonaws.com/public/local-uploads/#{categories[m]}-#{n+2}.jpg"
+    featured_image = File.open(File.join(Rails.root, "app/assets/images/sleezy-photos/#{categories[m]}-#{n+1}.jpg"))
     category_id = m+1
     status = "published"
     author_id = n+1
@@ -51,7 +51,7 @@ end
 
     article = Article.create!(title: title,
                               text: text,
-                              remote_featured_image_url: featured_image,
+                              featured_image: featured_image,
                               author_id: author_id,
                               category_id: category_id,
                               status: status,
@@ -62,7 +62,7 @@ end
 
     title = Faker::Book.title[0..50].titleize
     text = Faker::Lorem.paragraph(sentence_count: 60)
-    featured_image = "https://sleezy-app.s3.amazonaws.com/public/local-uploads/#{categories[m]}-6.jpg"
+    featured_image = File.open(File.join(Rails.root, "app/assets/images/sleezy-photos/#{categories[m]}-6.jpg"))
     category_id = m+1
     status = "saved"
     author_id = m+1
@@ -71,7 +71,7 @@ end
 
     article = Article.create!(title: title,
                               text: text,
-                              remote_featured_image_url: featured_image,
+                              featured_image: featured_image,
                               author_id: author_id,
                               category_id: category_id,
                               status: status,

@@ -2,36 +2,28 @@
   <div class="article-form">
 
     <%= form_for(@article, html: { multipart: true }) do |f| %>
-      <% if @article.errors.any? %>
-        <div class="alert alert-danger">
-          <p>The form has the following <%= pluralize(@article.errors.count, 'error')%>:</p>
-          <ul>
-            <% @article.errors.full_messages.each do |error| %>
-              <li>
-                <%= error %>
-              </li>
-            <% end %>
-          </ul>
-        </div>
-      <% end %>
+
+      <%= render 'shared/errors', object: f.object %>
+
       <div class="row">
         <div class="col-12 col-lg-8">
           <div class="group">
-            <%= f.text_field :title, autocomplete: 'off', maxlength: "60", class: "input", placeholder: "Title" %>
+            <%= f.text_area :title, autocomplete: 'off', maxlength: "60", class: "input", placeholder: "Title" %>
           </div>
           <div class="group">
-            <%= f.text_area :text,class: "input", id: "article-text-area" %>
+            <%= f.label :text, "Text", class: "article-body-label" %>
+            <%= f.text_area :text,class: "input article-text-area", id: "article-text-area" %>
           </div>
 
         </div>
         <div class="col-12 col-lg-4 mt-5">
-          <div class="article-featured-image" id="article-featured">
+          <div class="article-featured-image-edit" id="article-featured">
             <div id="display-img" class="display-img">
                <% unless @article.featured_image.blank? %>
                   <%= image_tag(@article.featured_image_url, id: "previewImage") %>
                 <% end %>
             </div>
-            <%= f.file_field :featured_image, id: "article-image", class: "file-input" %>
+            <%= f.file_field :featured_image, id: "article-image", class: "article-image file-input" %>
              <% if @article.featured_image.blank? %>
               <div id="drop_zone">
                 Add Featured Image
@@ -44,7 +36,7 @@
               <div class="input-group-prepend">
                 <div class="input-group-text"><%= fa_icon('list-alt') %></div>
               </div>
-              <%= collection_select(:article, :category_id, Category.all, :id, :name, {prompt: "Select Category"}, {class: "form-control cat-select"}) %>
+              <%= collection_select(:article, :category_id, Category.all, :id, :name_with_caps, {prompt: "Select Category"}, {class: "form-control cat-select"}) %>
             </div>
           </div>
 
@@ -69,14 +61,3 @@
     <% end %>
   </div>
 </div>
-
-<script type="text/javascript" src = "../../assets/froala_editor.pkgd.min.js"></script>
-
-<script>
- new FroalaEditor('#article-text-area', {
-    placeholderText: 'Tell your story...',
-    heightMin: 100,
-    heightMax: 300,
-    height: 300
-  })
-</script>

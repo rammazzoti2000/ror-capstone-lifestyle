@@ -15,7 +15,7 @@ class UsersController < ApplicationController
     if @user.save
       create_session(@user)
       create_cookies(@user)
-      flash['alert-success'] = 'Welcome! You are now a member'
+      flash['alert-success'] = 'Welcome to the great Lifestyle platform'
       redirect_to root_path
     else
       render :new
@@ -24,18 +24,18 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
+    @user = current_user
     @articles = @user.articles
   end
 
   def edit
-    @user = User.find(params[:id])
+    @user = current_user
   end
 
   def update
-    @user = User.find(params[:id])
+    @user = current_user
     if @user.update(user_params)
-      redirect_to user_path(@user)
+      redirect_to profile_path
     else
       render :edit
     end
@@ -45,8 +45,7 @@ class UsersController < ApplicationController
 
     def user_params
       params.required(:user).permit(:name, :username, :email,
-                                    :facebook, :twitter,
-                                    :linkedin, :avatar,
+                                    :facebook, :twitter, :avatar,
                                     :password, :password_confirmation)
     end
 end

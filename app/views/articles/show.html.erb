@@ -4,14 +4,15 @@
       <div class="col-12 col-md-9">
         <div class="article-card">
           <h1 class="card-cat"><%= @article.category.name.upcase %></h1>
-          <h1 class="card-title"><%= @article.title.titleize %></h1>
+          <h2 class="card-title"><%= @article.title.titleize %></h2>
           <div class="article-info d-md-flex flex-column flex-sm-column flex-md-row">
             <div class="info1">
               <div class="author-name">
                 By <%= @article.author.name.titleize %>
               </div>
               <div class="date">
-                <%= @article.created_at.strftime("%b %-d %Y")%>
+
+                <%= get_strftime(@article.created_at, "%b %-d %Y") %>
               </div>
             </div>
             <div class="info2 d-flex justify-content-start mt-3">
@@ -19,14 +20,25 @@
                 <%= fa_icon('eye') %> &nbsp; <span class="view-no"><%= @article.views %></span>
               </div>
               <div class="vote-form" id="vote_form">
-
+              <% if current_user %>
                 <%= render partial: 'vote_form', locals: {article: @article} %>
-
+              <% else %>
+                <%= link_to votes_path, class: "pseudo-vote" do %>
+                  <span class="vote">
+                      <%= button_tag fa_icon("arrow-alt-circle-up", type: :regular), class: "vote-button" %> &nbsp;
+                      <span class="view-no"><%= count_all(@article.votes) %></span>
+                  </span>
+                <% end %>
+              <% end %>
               </div>
               <div class="bookmark-form" id="bookmark_form">
-
+                <% if current_user %>
                  <%= render partial: 'bookmark_form', locals: {article: @article} %>
-
+                 <% else %>
+                  <%= link_to bookmarks_path do %>
+                    <%= button_tag fa_icon("bookmark"), class: "vote-button" %>
+                  <% end %>
+                <% end %>
               </div>
             </div>
           </div>
@@ -36,17 +48,19 @@
           </div>
           <div class="author-social-link">
             <hr>
-            <div class="author-info d-flex flex-wrap justify-content-between align-items-center">
-              <div class="article-tags">
-                Tags:
-                <% @article.tags.each_with_index do |tag, index| %>
-                  <% if index == (@article.tags.length-1) %>
-                    <%= "#{tag.name}." %>
-                  <% else %>
-                    <%= "#{tag.name}," %>
+            <div class="author-info d-flex flex-wrap justify-content-center justify-content-sm-between align-items-center">
+              <% if @article.tags.any? %>
+                <div class="article-tags">
+                  Tags:
+                  <% @article.tags.each_with_index do |tag, index| %>
+                    <% if index == (@article.tags.length-1) %>
+                      <%= "#{tag.name}." %>
+                    <% else %>
+                      <%= "#{tag.name}," %>
+                    <% end %>
                   <% end %>
-                <% end %>
-              </div>
+                </div>
+              <% end %>
               <div class="author-social-icons">
                 <%= link_to fa_icon('facebook-square', type: :brand, size: '3x' ), @article.author.facebook, class: "facebook" %>
                 <%= link_to fa_icon('linkedin', type: :brand, size: '3x' ), @article.author.facebook, class: "linkedin" %>
@@ -74,19 +88,9 @@
             </div>
             <div class="comment-section new-comment" id="new-comment">
               <div class="comment-form">
-                <%= form_for(@comment, remote: true) do |f| %>
-                <%= hidden_field_tag :article_id, @article.id %>
 
-                  <div class="group">
-                  <%= f.label :name, "Name", class: "label" %>
-                    <%= f.text_field :name, class: "input", id: "comment-name"  %>
-                  </div>
-                  <div class="group">
-                    <%= f.label :body, "Comment", class: "label" %>
-                    <%= f.text_area :body, class: "input", id: "comment-body" %>
-                  </div>
-                  <%= f.submit "Comment", class: "button" %>
-                <% end %>
+               <%= render 'comments/comment_form' %>
+
               </div>
             </div>
           </div>
@@ -94,38 +98,43 @@
       </div>
       <div class="col-12 col-md-3">
         <div class="suggested-articles mt-3 text-center">
-          <h1 class="section-header">Suggested Articles</h1>
-          <% @articles.take(2).each do |suggested_articles| %>
-            <%= link_to article_path(suggested_articles.id), class: "suggested-article-link" do %>
-              <div class="card my-4 m-3">
-                <div class="image ripple suggested-image">
-                  <%= image_tag(suggested_articles.featured_image_url, alt: suggested_articles.title, class: "card-img-top")%>
-                </div>
-                <div class="card-body">
-                  <h5 class="card-title"><%= suggested_articles.category.name.capitalize %></h5>
-                  <p class="card-text"><%= suggested_articles.title %></p>
-                </div>
-              </div>
-            <% end %>
+
+          <% if article_present(@all_suggested_articles) %>
+            <h2 class="section-header">Suggested Articles</h2>
           <% end %>
+          <div class="suggested-article-content">
+            <% article_random(@all_suggested_articles, 4).each do |suggested_articles| %>
+              <%= link_to article_path(suggested_articles.id), class: "suggested-article-link" do %>
+                <div class="card my-4 m-3">
+                  <div class="image ripple suggested-image">
+                    <%= image_tag(suggested_articles.featured_image_url, alt: suggested_articles.title, class: "card-img-top")%>
+                  </div>
+                  <div class="card-body">
+                    <h5 class="card-title"><%= suggested_articles.category.name.capitalize %></h5>
+                    <p class="card-text"><%= suggested_articles.title %></p>
+                  </div>
+                </div>
+              <% end %>
+            <% end %>
+          </div>
         </div>
 
         <div class="popular-articles">
           <div class="list-group">
             <div class="list-group-item list-group-item-action header">
-              <h1 class="card-cat"><%= @article.category.name %></h1>
-              <h1 class="card-title">Most Popular</h1>
+              <h1 class="card-cat"><%= @article.category.name.capitalize %></h1>
+              <h2 class="card-title">Most Popular</h2>
             </div>
-            <% @articles.take(5).each_with_index do |popular_articles, index| %>
+            <% @most_popular_articles.each_with_index do |popular_articles, index| %>
               <%= link_to article_path(popular_articles), class: "list-group-item list-group-item-action list" do %>
                 <div class="popular-article-item d-flex flex-column">
                   <p class="card-text"><%= popular_articles.title %></p>
                   <div class="views d-flex align-items-center align-self-end">
                     <span class="view">
-                       <%= fa_icon('eye') %> &nbsp; <span class="view-no"><%= @article.views %></span>
+                       <%= fa_icon('eye') %> &nbsp; <span class="view-no"><%= popular_articles.views %></span>
                     </span>
                     <span class="comment">
-                     <%= fa_icon('comment-alt') %> &nbsp; <span class="view-no"><%= @article.comments.count %></span>
+                     <%= fa_icon('comment-alt') %> &nbsp; <span class="view-no"><%= count_all(popular_articles.comments) %></span>
                     </span>
                   </div>
                 </div>

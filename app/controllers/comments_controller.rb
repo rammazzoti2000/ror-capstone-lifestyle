@@ -8,7 +8,6 @@ class CommentsController < ApplicationController
     @comment = Comment.new
     @article = Article.find(params[:article_id])
     @comment = @article.comments.build(comment_params)
-    
     if @comment.save
       respond_to do |format|
         format.html { redirect_to(request.referer) }
@@ -24,7 +23,7 @@ class CommentsController < ApplicationController
 
   private
 
-  def comment_params
-    params.required(:comment).permit(:name, :body, :tag, :article_id)
-  end
+    def comment_params
+      params.require(:comment).permit(:name, :body, :article_id)
+    end
 end

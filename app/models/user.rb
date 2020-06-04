@@ -9,14 +9,15 @@ class User < ApplicationRecord
   has_many :bookmarks, foreign_key: 'user_id', dependent: :destroy
   has_many :bookmarked_articles, through: :bookmarks, source: :article
 
-  validates :name,  presence: true, length: { maximum: 50 }
-  validates :username, presence: true, length: { maximum: 50 },
-                       uniqueness: { case_sensitive: false }
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i.freeze
+  validates :name, presence: true, length: { in: 3..50 }
+  validates :username, presence: true, length: { in: 3..50 },
+                       uniqueness: { case_sensitive: false }
   validates :email, presence: true, length: { maximum: 255 },
                     uniqueness: { case_sensitive: false },
                     format: { with: VALID_EMAIL_REGEX }
-  validates :password, presence: true, length: { minimum: 6 }
+  validates :password, presence: true, length: { maximum: 255 }
+
 
   mount_uploader :avatar, AvatarUploader
   before_save :downcase_email

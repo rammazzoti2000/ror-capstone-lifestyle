@@ -1,18 +1,17 @@
-<div class="main-content new-article">
-  <div class="article-form">
+<div class="main-content new-article pt-5">
+  <div class="article-form group category-form">
+
     <%= form_for(@category) do |f| %>
+      <%= render 'shared/errors', object: f.object %>
       <div class="category-form">
-        <h3>Category</h3>
+        <h3 class="article-body-label">Input Category</h3>
+
         <div class="group">
-          <%= f.label :name %>
-          <%= f.text_field :name, maxlength: "10", class: "input"%>
+          <%= f.text_field :name, maxlength: "8", class: "input", placeholder: "Name" %>
         </div>
+
         <div class="group">
-          <%= f.label :priority %>
-          <%= f.text_field :priority, class: "input" %>
-        </div>
-        <div class="group">
-          <%= f.submit "Create Category", class: "btn btn-primary" %>
+          <%= f.submit "Create Category", class: "button" %>
         </div>
       </div>
     <% end %>

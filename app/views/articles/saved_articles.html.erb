@@ -1,37 +1,35 @@
 <div class="main-content category-articles">
   <div class="category-articles-all">
-    <div class="section-heading text-center">
-      <h1 class="display-4">Your Saved Articles</h1>
-    </div>
+    <% if article_present(@saved_articles) %>
+      <div class="section-heading text-center py-4">
+        <h2 class="display-4 py-4">Your Saved Articles</h2>
+      </div>
 
-    <% if Article.user_save_articles(current_user).any? %>
-    <div class="category-all-articles d-flex flex-wrap mb-5">
-      <% Article.user_save_articles(current_user).each_with_index do |article, index| %>
-        <div class="article-contents d-flex flex-row flex-wrap order-md-<%= parent_order_sm(index+1) %> order-xl-<%= parent_order_lg(index+1)%>">
-          <div class="article-cont p-0 col-12 col-sm-6 order-<%= get_order_1(index) %> order-lg-<%= get_order_1(index) %>">
-            <%= image_tag(article.featured_image_url, alt: article.title, class: "img-fluid") %>
-          </div>
-          <div class="article-cont p-0 col-12 col-sm-6 order-<%= get_order_2(index) %> order-lg-<%= get_order_2(index) %>">
-            <div class="article-item-desc">
-              <h6><%= link_to article.title.titleize, edit_article_path(article) %></h6>
-              <p><%= string_length(article.text, 80) %></p>
-              <div class="attr d-flex justify-content-start align-items-center">
-                <span class="view">
-                  <%= fa_icon('arrow-alt-circle-up') %> &nbsp; <span class="view-no"><%= article.votes.count %></span>
-                </span>
-                <span class="comment">
-                  <%= fa_icon('comment-alt') %> &nbsp; <span class="view-no"><%= article.comments.count %></span>
-                </span>
-                <span class="min-read">
-                  <%= min_read(article.text) %> mins read
+      <div class="category-all-articles d-flex flex-wrap mb-5">
+        <% @saved_articles.each_with_index do |article, index| %>
+          <div class="article-contents d-flex flex-row flex-wrap order-md-<%= parent_order(index+1) %> order-xl-<%= parent_order(index+1)%>">
+            <div class="article-cont p-0 col-12 col-sm-6 order-<%= get_order_1(index) %> order-xl-<%= get_order_1(index) %>">
+              <%= image_tag(article.featured_image_url, alt: article.title, class: "img-fluid") %>
+            </div>
+            <div class="article-cont position-relative p-0 col-12 col-sm-6 order-<%= get_order_2(index) %> order-xl-<%= get_order_2(index) %>">
+              <div class="article-item-desc">
+                <h6><%= link_to article.title.titleize, edit_article_path(article) %></h6>
+                <p><%= string_length(article.text, 80) %></p>
+                <div class="attr d-flex justify-content-start align-items-center">
+                  <span class="saved-art min-read">
+                    <%= min_read(article.text) %> mins read
+                  </span>
+                </div>
+                <span class="saved-art view">
+                  <%= link_to article_path(article), method: :delete, data: {confirm: "Are you sure you want to delete this article?"} do %>
+                    <%= fa_icon('times-circle') %>
+                  <% end %>
                 </span>
               </div>
-
             </div>
           </div>
-        </div>
-      <% end %>
-    </div>
+        <% end %>
+      </div>
     <% else %>
       <h2 class="display-5 text-center no-article-text">You have no saved article!</h2>
     <% end %>

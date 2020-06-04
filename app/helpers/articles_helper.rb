@@ -12,27 +12,15 @@ module ArticlesHelper
     num.odd? ? 1 : 2
   end
 
-  def parent_order_lg(num)
+  def parent_order(num)
     if ((num - 1) % 4).zero?
-      num + 1
+      1 + (num-1)
     elsif ((num - 2) % 4).zero?
-      num - 1
+      3 + (num-2)
     elsif ((num - 3) % 4).zero?
-      num
+      2 + (num-3)
     elsif ((num - 4) % 4).zero?
-      num
-    end
-  end
-
-  def parent_order_sm(num)
-    if ((num - 1) % 4).zero?
-      1
-    elsif ((num - 2) % 4).zero?
-      3
-    elsif ((num - 3) % 4).zero?
-      2
-    elsif ((num - 4) % 4).zero?
-      4
+      4 + (num-4)
     end
   end
 
@@ -53,7 +41,7 @@ module ArticlesHelper
     searched_info = ''
     if searched_count.present?
       searched_info = "Search for \"#{search}\"<br> "
-      searched_info += "Result for #{pluralize(searched_count.count, 'user')}"
+      searched_info += "Result for #{pluralize(searched_count.count, 'article')}"
     else
       if search.present?
         searched_info = "No search for \"#{search}\""
@@ -62,5 +50,29 @@ module ArticlesHelper
       end
     end
     searched_info.html_safe
+  end
+
+  def article_present(article)
+    article.any?
+  end
+
+  def category_article_limit(article, limit)
+    article[0..limit]
+  end
+
+  def article_random(article, num)
+    article.sample(num)
+  end
+
+  def count_all(model)
+    model.count
+  end
+
+  def get_strftime(model, time_mode)
+    model.strftime(time_mode)
+  end
+
+  def sort_array(arr)
+    arr.sort().last
   end
 end

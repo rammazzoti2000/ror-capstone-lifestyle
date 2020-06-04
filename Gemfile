@@ -3,15 +3,18 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.6.5'
 
-gem 'simple_form'
-gem 'mini_magick'
-gem 'wysiwyg-rails'
-gem 'font_awesome5_rails'
 gem 'jquery-rails'
+gem 'carrierwave', '~> 2.0'
 gem 'faker'
+gem 'font_awesome5_rails'
+gem 'mini_magick'
+gem 'simple_form'
+gem 'wysiwyg-rails'
 gem 'trix'
-gem 'carrierwave'
 gem 'fog-aws'
+gem 'aws-sdk-s3'
+gem 'will_paginate',           '3.1.6'
+gem 'bootstrap-will_paginate', '1.0.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.3', '>= 6.0.3.1'
@@ -40,6 +43,8 @@ group :development, :test do
   gem 'sqlite3', '1.4.2'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem "database_cleaner"
+  gem "rspec-rails"
 end
 
 group :development do
@@ -49,6 +54,7 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'bullet'
 end
 
 group :test do
@@ -57,11 +63,11 @@ group :test do
   gem 'selenium-webdriver'
   # Easy installation and use of web drivers to run system tests with browsers
   gem 'webdrivers'
+  gem 'shoulda'
 end
 
 group :production do
   gem 'pg', '1.2.3'
-  gem 'aws-sdk-s3', '1.46.0', require: false
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

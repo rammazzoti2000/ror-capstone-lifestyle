@@ -7,7 +7,7 @@
             <div class="comment-name"><%= comment.name %> says...</div>
               <div class="comment-body">
                 <p><%= sanitize comment.body %></p>
-                <span><%= comment.created_at.strftime("%B %d %Y")%></span>
+                <span><%= get_strftime(comment.created_at, "%B %d %Y") %></span>
               </div>
           </div>
         </div>

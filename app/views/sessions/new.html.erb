@@ -1,21 +1,8 @@
-<div class="back-home">
-  <a href="/">
-    <span class="back-home-link">
-      <%= fa_icon('arrow-circle-left' ) %>
-      Back to Home Page
-    </span>
-  </a>
-</div>
 <div class="signup-login-forms">
   <div class="form-contents">
-
     <div class="login-html">
-      <%# <input id="sign-in" type="radio" name="tab" class="sign-in" checked> %>
       <%= link_to "Log In", login_path, class: "sign-in tab active"%>
-      <%# <label for="sign-in" class="tab">Log In</label> %>
-      <%# <input id="sign-up" type="radio" name="tab" class="sign-up"> %>
        <%= link_to "Register", signup_path, class: "sign-up tab"%>
-      <%# <label for="sign-up" class="tab">Register</label> %>
       <div class="login-form">
         <div class="sign-in-form">
           <%= form_for(:session, url: login_path) do |f| %>
@@ -32,9 +19,8 @@
             </div>
             <div class="hr"></div>
             <div class="foot-lnk">
-              <a href="#forgot">Forgot Password?</a>
+              <%= link_to 'Want to be a member', signup_path %>
             </div>
-
           <% end %>
         </div>
 

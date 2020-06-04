@@ -1,10 +1,20 @@
 class Category < ApplicationRecord
+  before_save :downcase_category_name
 
   has_many :articles, dependent: :destroy
-  
-  has_many :event_attendees, foreign_key: 'attended_event_id',
-                             dependent: :destroy
-  has_many :attendees, through: :event_attendees
 
-  validates :name, :priority, presence: true
+  validates :name, presence: true, length: { in: 2..8 }
+
+
+  scope :all_categories, -> { includes(:articles).where(articles: { status: "published" }) }
+
+  def name_with_caps
+    self.name.capitalize
+  end
+
+  private
+
+    def downcase_category_name
+      self.name = name.downcase
+    end
 end

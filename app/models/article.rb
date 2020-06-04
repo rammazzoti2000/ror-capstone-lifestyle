@@ -1,6 +1,8 @@
 class Article < ApplicationRecord
+  before_save :capitalize_title
 
   belongs_to :author, class_name: 'User'
+
   belongs_to :category
 
   has_many :comments, foreign_key: 'article_id', dependent: :destroy
@@ -17,29 +19,20 @@ class Article < ApplicationRecord
   mount_uploader :featured_image, FeaturedImageUploader
 
   validates :title, presence: true, length: { in: 3..50 }
-  validates :text, presence: true, length: { minimum: 50 }
+  validates :text, presence: true, length: { minimum: 20 }
   validates :featured_image, :author_id, :category_id, presence: true
 
-  scope :all_published_articles, -> { where('status = ? ', 'published') }
-  scope :user_saved_articles, ->(user_id) { where('id = ? and status = ? ',
-                                                  user_id, 'saved') }
-  scope :category_first_article, ->(category_id) { where('category_id = ? and status = ?',
-                                                          category_id, 'published').last }
-  scope :category_all_article, ->(category_id) { where('category_id = ? and status = ?',
-                                                        category_id, 'published') }
-  scope :featured, -> { Vote.group(:article_id).count.keys.first }
-  scope :featured_article, -> { find_by(id: featured, status: 'published') }
-  scope :most_popular, ->  { Vote.group(:article_id).count.keys.take(5) }
-  scope :most_popular_articles, -> { where(id: most_popular) }
-  scope :user_pub_articles, ->(user) { where('author_id = ? and status = ?',
-                                              user, 'published') }
-  scope :user_save_articles, ->(user) { where('author_id = ? and status = ?',
-                                               user, 'saved') }
-  scope :user_bookmarks, ->(user) { Bookmark.where('user_id = ? ', user) }
-  scope :suggested_articles, ->(category_id) { where('category_id = ? and status = ? ',
-                                                      category_id, 'published') }
-  default_scope -> { order(created_at: :desc) }
+  scope :all_published_articles, -> { includes(:category).where('status = ? ', 'published') }
+  scope :articles_per_category, ->(category_id) { includes(:author).where('category_id = ? and status = ?', category_id, 'published') }
+  scope :category_all_article, -> { Category.includes(:articles).where(articles: { status: "published" }).order(priority: :desc) }
+  scope :featured_article, -> { self.all_published_articles.joins(:votes).group(:id).count.sort_by{|k, v| v}.last }
+  scope :most_popular_articles, ->  { where(id: self.all_published_articles.joins(:votes).group(:id).count.sort_by{|k, v| v}.last(4).map {|a, b| a}) }
+  scope :user_pub_articles, ->(current_user) { where('author_id = ? and status = ?', current_user, 'published') }
+  scope :user_save_articles, ->(current_user) { where('author_id = ? and status = ?', current_user, 'saved') }
+  scope :user_bookmarks, ->(current_user) { includes(:author).joins(:bookmarks).where('user_id = ? ', current_user) }
+  scope :suggested_article, ->(tag, category_id) { self.all_published_articles.joins(:taggings).where('tag_id = ? or category_id = ? ', tag, category_id) }
 
+  default_scope -> { order(created_at: :desc) }
 
   def tag_list
     self.tags.collect do |tag|
@@ -51,12 +44,29 @@ class Article < ApplicationRecord
     tag_names = tags_string.split(",").collect{|s| s.strip.downcase}.uniq
     new_or_found_tags = tag_names.collect { |name| Tag.find_or_create_by(name: name) }
     self.tags = new_or_found_tags
+
+  end
+
+  def self.all_suggested_article(category_id, article)
+    suggested_art_arr = []
+    article.tags.each do |tag|
+      suggested_art_arr << Article.suggested_article(tag, category_id)
+    end
+    suggested_art_arr.flatten.uniq - [article]
   end
 
   def self.search_article(search)
     split_search = search.downcase.split(" ")
-    if all_published_articles.pluck(:title).include?(split_search[0])
-      all_published_articles.pluck(:title)
+    arr = []
+    self.all_published_articles.unscope(:includes).each do |article|
+      split_search.map { |word| arr << article if article.title.downcase.split(' ').include?(word) }
     end
+    arr.uniq
   end
+
+  private
+
+    def capitalize_title
+      self.title = title.capitalize
+    end
 end

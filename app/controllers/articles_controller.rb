@@ -1,4 +1,11 @@
 class ArticlesController < ApplicationController
+  before_action :logged_in_user_for_bookmark, only: [:bookmarks]
+  before_action :logged_in_user, except: [:show, :bookmarks, :search]
+  before_action :non_editing_published_articles, only: [:edit, :update]
+  before_action :redirect_index_page, only: [:index]
+
+  def index
+  end
 
   def new
     @article = Article.new
@@ -6,10 +13,11 @@ class ArticlesController < ApplicationController
 
   def show
     @article = Article.find(params[:id])
-    @articles = Article.all
+    @articles = Article.all_published_articles
     @comment = Comment.new
     @categories = Category.all
-
+    @most_popular_articles = Article.most_popular_articles
+    @all_suggested_articles = Article.all_suggested_article(@article.category.id, @article)
     @pageview = Article.where(author_id: current_user,
                               id: params[:id]).first_or_create
     @pageview.increment!(:views)
@@ -61,30 +69,53 @@ class ArticlesController < ApplicationController
     end
   end
 
+  def destroy
+    @delete_article = Article.find(params[:id])
+    @delete_article.destroy
+    flash['alert-warning'] = 'Your article has been succesfully deleted!'
+    redirect_to saved_articles_path
+  end
+
   def published_articles
+    @published_articles = Article.user_pub_articles(current_user)
   end
 
   def saved_articles
+    @saved_articles = Article.user_save_articles(current_user)
   end
 
   def bookmarks
+    @bookmarked_articles = Article.user_bookmarks(current_user)
   end
 
   def search
+    @search_param = params[:q]
     @search_articles = Article.search_article(params[:q])
-  end
-
-  def increment
-    @pageview = Article.where(author_id: current_user,
-                              id: params[:id]).first_or_create
-    @pageview.increment!(:views)
   end
 
   private
 
     def article_params
-      params.required(:article).permit(:title, :text, :tag,
-                                       :featured_image, :tag_list,
+      params.required(:article).permit(:title, :text, :featured_image, :tag_list,
                                        :category_id, :author_id, :status)
+    end
+
+    def logged_in_user_for_bookmark
+      unless logged_in?
+        flash['alert-danger'] = 'You must be logged in to bookmark an article!'
+        redirect_to(request.referer)
+      end
+    end
+
+    def redirect_index_page
+      redirect_to(request.referer)
+    end
+
+    def non_editing_published_articles
+      @article = Article.find(params[:id])
+      unless @article.status != 'published'
+        flash['alert-danger'] = 'You cannnot edit a published article!'
+        redirect_to article_path(@article)
+      end
     end
 end
