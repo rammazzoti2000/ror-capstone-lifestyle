@@ -35,6 +35,7 @@ class UsersController < ApplicationController
   def update
     @user = current_user
     if @user.update(user_params)
+      flash['alert-success'] = "User updated succesfully"
       redirect_to profile_path
     else
       render :edit
@@ -45,7 +46,7 @@ class UsersController < ApplicationController
 
     def user_params
       params.required(:user).permit(:name, :username, :email,
-                                    :facebook, :twitter, :avatar,
+                                    :twitter, :linkedin, :avatar,
                                     :password, :password_confirmation)
     end
 end

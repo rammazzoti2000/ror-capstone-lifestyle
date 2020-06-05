@@ -185,14 +185,14 @@ p {
       &::before {
         content: "";
         position: absolute;
-        left: 0;
+        left: 2px;
         bottom: -0.5rem;
         background-color: $primary_color1;
-        width: 100%;
+        width: 92%;
         height: 2px;
         transform: scaleX(0);
-        transform-origin: left;
-        transition: transform 650ms;
+        transform-origin: unset;
+        transition: transform 400ms;
       }
 
       &:hover::before,
@@ -538,6 +538,10 @@ button.input {
 
         &::before {
           background: $primary_color1;
+          left: 0;
+          width: 100%;
+          transform-origin: left;
+          transition: transform 500ms;
         }
 
         &.current,

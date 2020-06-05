@@ -62,9 +62,9 @@
                 </div>
               <% end %>
               <div class="author-social-icons">
-                <%= link_to fa_icon('facebook-square', type: :brand, size: '3x' ), @article.author.facebook, class: "facebook" %>
-                <%= link_to fa_icon('linkedin', type: :brand, size: '3x' ), @article.author.facebook, class: "linkedin" %>
-                <%= link_to fa_icon('twitter-square', type: :brand, size: '3x' ), @article.author.twitter, class: "twitter" %>
+                <%= link_to fa_icon('linkedin', type: :brand, size: '3x' ),
+                 @article.author.linkedin, class: "linkedin", target: :_blank %>
+                <%= link_to fa_icon('twitter-square', type: :brand, size: '3x' ), @article.author.twitter, class: "twitter", target: :_blank %>
               </div>
             </div>
           <hr>
