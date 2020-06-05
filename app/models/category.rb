@@ -5,16 +5,15 @@ class Category < ApplicationRecord
 
   validates :name, presence: true, length: { in: 2..8 }
 
-
-  scope :all_categories, -> { includes(:articles).where(articles: { status: "published" }) }
+  scope :all_categories, -> { includes(:articles).where(articles: { status: 'published' }) }
 
   def name_with_caps
-    self.name.capitalize
+    name.capitalize
   end
 
   private
 
-    def downcase_category_name
-      self.name = name.downcase
-    end
+  def downcase_category_name
+    self.name = name.downcase
+  end
 end

@@ -1,5 +1,4 @@
 class StaticPagesController < ApplicationController
-
   def home
     @articles = Article.all_published_articles
     @article_limit_two = @articles.take(2)

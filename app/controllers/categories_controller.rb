@@ -1,5 +1,4 @@
 class CategoriesController < ApplicationController
-
   def index
     cat = params[:name]
     @category = Category.find_by(name: cat)
@@ -22,12 +21,11 @@ class CategoriesController < ApplicationController
     end
   end
 
-  def show
-  end
+  def show; end
 
   private
 
-    def category_params
-      params.require(:category).permit(:name)
-    end
+  def category_params
+    params.require(:category).permit(:name)
+  end
 end

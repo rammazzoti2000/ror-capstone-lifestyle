@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  before_action :logged_in_user, except: [:new, :create]
-  before_action :already_logged_in, only: [:new, :create]
+  before_action :logged_in_user, except: %i[new create]
+  before_action :already_logged_in, only: %i[new create]
 
   def index
     @users = User.all
@@ -20,7 +20,6 @@ class UsersController < ApplicationController
     else
       render :new
     end
-
   end
 
   def show
@@ -35,7 +34,7 @@ class UsersController < ApplicationController
   def update
     @user = current_user
     if @user.update(user_params)
-      flash['alert-success'] = "User updated succesfully"
+      flash['alert-success'] = 'User updated succesfully'
       redirect_to profile_path
     else
       render :edit
@@ -44,9 +43,9 @@ class UsersController < ApplicationController
 
   private
 
-    def user_params
-      params.required(:user).permit(:name, :username, :email,
-                                    :twitter, :linkedin, :avatar,
-                                    :password, :password_confirmation)
-    end
+  def user_params
+    params.required(:user).permit(:name, :username, :email,
+                                  :twitter, :linkedin, :avatar,
+                                  :password, :password_confirmation)
+  end
 end

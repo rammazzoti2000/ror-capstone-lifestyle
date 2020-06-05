@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe Article, type: :model do
-
   describe 'validations' do
     it { should validate_presence_of(:title) }
     it { should validate_presence_of(:text) }
@@ -25,7 +24,7 @@ RSpec.describe Article, type: :model do
   end
 
   describe 'scopes' do
-    it "scopes the articles in descending order" do
+    it 'scopes the articles in descending order' do
       expect(Article.all.to_sql).to eq Article.all.order(created_at: :desc).to_sql
     end
   end

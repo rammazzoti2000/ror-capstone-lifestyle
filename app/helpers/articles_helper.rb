@@ -14,13 +14,13 @@ module ArticlesHelper
 
   def parent_order(num)
     if ((num - 1) % 4).zero?
-      1 + (num-1)
+      1 + (num - 1)
     elsif ((num - 2) % 4).zero?
-      3 + (num-2)
+      3 + (num - 2)
     elsif ((num - 3) % 4).zero?
-      2 + (num-3)
+      2 + (num - 3)
     elsif ((num - 4) % 4).zero?
-      4 + (num-4)
+      4 + (num - 4)
     end
   end
 
@@ -43,11 +43,11 @@ module ArticlesHelper
       searched_info = "Search for \"#{search}\"<br> "
       searched_info += "Result for #{pluralize(searched_count.count, 'article')}"
     else
-      if search.present?
-        searched_info = "No search for \"#{search}\""
-      else
-        searched_info = 'Search for something'
-      end
+      searched_info = if search.present?
+                        "No search for \"#{search}\""
+                      else
+                        'Search for something'
+                      end
     end
     searched_info.html_safe
   end
@@ -73,6 +73,6 @@ module ArticlesHelper
   end
 
   def sort_array(arr)
-    arr.sort().last
+    arr.max
   end
 end
