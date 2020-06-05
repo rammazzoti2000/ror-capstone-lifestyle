@@ -14,13 +14,10 @@
  *= require_self
  *= require froala_editor.min.css
  *= require froala_style.min.css
-
  */
- //*= require trix
+//*= require trix
 
-
- @import "bootstrap/scss/bootstrap";
- @import 'font_awesome5_webfont';
-
- @import "froala_editor.min";
- @import "froala_style.min";
+@import "bootstrap/scss/bootstrap";
+@import 'font_awesome5_webfont';
+@import "froala_editor.min";
+@import "froala_style.min";
