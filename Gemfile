@@ -15,6 +15,7 @@ gem 'trix'
 gem 'will_paginate', '3.1.6'
 gem 'wysiwyg-rails'
 gem 'carrierwave'
+gem "websocket-extensions", ">= 0.1.5"
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.3', '>= 6.0.3.1'
