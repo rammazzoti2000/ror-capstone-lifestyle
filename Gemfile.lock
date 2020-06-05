@@ -320,7 +320,7 @@ DEPENDENCIES
   bullet
   byebug
   capybara (>= 2.15)
-  carrierwave (~> 2.0)
+  carrierwave
   database_cleaner
   faker
   fog-aws

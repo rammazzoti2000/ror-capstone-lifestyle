@@ -14,6 +14,7 @@ gem 'simple_form'
 gem 'trix'
 gem 'will_paginate', '3.1.6'
 gem 'wysiwyg-rails'
+gem 'carrierwave'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.3', '>= 6.0.3.1'
