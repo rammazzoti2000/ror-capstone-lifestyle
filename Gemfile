@@ -5,7 +5,6 @@ ruby '2.6.5'
 
 gem 'aws-sdk-s3'
 gem 'bootstrap-will_paginate', '1.0.0'
-gem 'carrierwave', '~> 2.0'
 gem 'faker'
 gem 'fog-aws'
 gem 'font_awesome5_rails'
