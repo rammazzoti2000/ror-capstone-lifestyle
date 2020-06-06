@@ -19,6 +19,70 @@
   }
 }
 
+i {
+  font-size: 2.2rem;
+}
+
+.input {
+  width: 100%;
+  background-color: wheat;
+  border: none;
+  border-radius: 8px;
+  outline: none;
+  padding: 1rem;
+  font-size: 1.5rem;
+}
+
+.view,
+.min-read {
+  display: flex;
+  align-items: center;
+  margin: 0 0.7rem;
+
+  i {
+    color: #eb3007;
+    font-size: 1.5rem;
+  }
+
+  .fa-eye-views {
+    font-size: 2.2rem;
+  }
+}
+
+.comment {
+  display: flex;
+  align-items: center;
+  margin: 0 0.7rem;
+
+  i {
+    color: #eb3007;
+    font-size: 1.5rem;
+  }
+
+  .fa-eye-views {
+    font-size: 2.2rem;
+  }
+}
+
+.saved-art.view {
+  position: absolute;
+  top: -10px;
+  right: -15px;
+
+  i {
+    font-size: 3rem !important;
+  }
+}
+
+.category-form {
+  width: 50%;
+
+  .input,
+  .input::placeholder {
+    font-size: 1.8rem !important;
+  }
+}
+
 .new-article {
   transform: translateY(3rem);
 
@@ -189,11 +253,6 @@
         margin: 0 1rem;
       }
 
-      i {
-        color: #121212;
-        font-size: 2.2rem;
-      }
-
       i.checked {
         color: #eb3007;
       }
@@ -235,7 +294,8 @@
       justify-content: flex-end;
       display: flex;
 
-      i {
+      .linkedin,
+      .twitter {
         margin: 0 1rem;
       }
     }
@@ -268,15 +328,15 @@
       margin: 2rem 0;
     }
 
-    .input {
-      width: 100%;
-      background-color: wheat;
-      border: none;
-      border-radius: 8px;
-      outline: none;
-      padding: 1rem;
-      font-size: 1.5rem;
-    }
+    // .input {
+    //   width: 100%;
+    //   background-color: wheat;
+    //   border: none;
+    //   border-radius: 8px;
+    //   outline: none;
+    //   padding: 1rem;
+    //   font-size: 1.5rem;
+    // }
   }
 
   .label,
@@ -303,11 +363,16 @@
 }
 
 // Suggested Articles
+.card-text {
+  font-size: 1.6rem;
+  font-family: 'Arial', serif;
+}
 
 .suggested-articles {
   .card-title {
     font-size: 1.5rem;
     color: #eb3007;
+    font-weight: bold;
   }
 
   .card-text {
@@ -344,45 +409,8 @@
   }
 }
 
-.card-text {
-  font-size: 1.6rem;
-  font-family: 'Arial', serif;
-}
-
-.view,
-.comment,
-.min-read {
-  display: flex;
-  align-items: center;
-  margin: 0 0.7rem;
-
-  i {
-    color: #eb3007;
-    font-size: 1.5rem;
-  }
-}
-
 .saved-art.min-read {
   color: #eb3007;
-}
-
-.saved-art.view {
-  position: absolute;
-  top: -10px;
-  right: -15px;
-
-  i {
-    font-size: 3rem !important;
-  }
-}
-
-.category-form {
-  width: 50%;
-
-  .input,
-  .input::placeholder {
-    font-size: 1.8rem !important;
-  }
 }
 
 // Media Queries

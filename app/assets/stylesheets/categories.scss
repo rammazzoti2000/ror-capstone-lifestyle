@@ -32,6 +32,10 @@
     flex-direction: column;
     justify-content: center;
 
+    a {
+      font-size: 1.3rem;
+    }
+
     h6 a {
       color: #eb3108;
       font-size: 1.5rem;
@@ -48,7 +52,6 @@
       font-size: 1.7rem;
     }
 
-    a,
     i,
     span {
       font-size: 1.3rem;

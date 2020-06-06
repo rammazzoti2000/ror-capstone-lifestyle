@@ -329,7 +329,7 @@ p {
 }
 
 .psuedo-search-button {
-  padding: 0.375rem 0.75rem;
+  padding: 0.6rem 0.75rem;
   font-size: 1rem;
   vertical-align: middle;
   text-align: center;
@@ -338,6 +338,10 @@ p {
   color: #fff;
   background: $primary_color1;
   cursor: pointer;
+
+  .search-icon {
+    font-size: 1.7rem;
+  }
 }
 
 // Footer
@@ -515,6 +519,10 @@ button.input {
       top: 3rem;
     }
 
+    .nav-link {
+      padding: 0.5rem 1rem;
+    }
+
     .navbar {
       flex-direction: column;
       justify-content: flex-start;
@@ -602,10 +610,6 @@ button.input {
 
         .nav-item:not(.last) {
           border-bottom: none;
-        }
-
-        .nav-link {
-          padding: 0.5rem 1rem;
         }
 
         &::before {
