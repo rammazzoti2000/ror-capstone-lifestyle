@@ -45,6 +45,8 @@
 
 * [About the Project](#about-the-project)
   * [Built With](#built-with)
+* [Installation](#installation)
+* [Database Structure](#database-structure)
 * [Live Demo and Presentation](#live-demo-and-presentation)
 * [Contributors](#contributors)
 * [Acknowledgements](#acknowledgements)
@@ -75,16 +77,22 @@ To have this app on your pc, you need to:
     https://github.com/rammazzoti2000/ror-capstone-lifestyle.git
   ```
 * and open the terminal inside the repo and run the bundler
-  - ```$ bundler install```
-* then, run rails db:migrate. This creates the database with the corresponding tables, columns and associations
+  - ```$ bundler install --without production```
+* then, run rails db:migrate && rails db:seed. This creates the database with the corresponding tables, columns and associations and will populate the database with mockup content
   - ```$ rails db:migrate```
-* and finally, you can test it in the console by running
+  - ```$ rails db:seed```
+* and finally, you can test it in the console by running and singin with a user already defined --> :point_right: ```maxinova``` :point_left:
   - ```$ rails server``` and using ```localhost:3000``` into your browser address bar to start using it
+  - for any technical problems running ```rails db:migrate:reset && rails db:seed``` should solve it
   ## Rspec testing
 
 * Run the command and see the output: 
 ```$ bundle exec rspec```
 ![Rspec](app/assets/images/rspec.png)
+
+## Database Structure
+ * Database schema used for this project reflects the following structure:
+ ![erd](app/assets/images/erd.png)
 
 ### Built With
 This project was built using these technologies.
@@ -99,9 +107,9 @@ This project was built using these technologies.
 
 <!-- Live Demo -->
 ## Live Demo and Presentation
-* Live Demo Link: [ror-capstone-lifeopedia](https://ror-capstone-lifeopedia.herokuapp.com/) :point-left:
+* Live Demo Link: [ror-capstone-lifeopedia](https://ror-capstone-lifeopedia.herokuapp.com/) :point_left:
 ##
-* Project Presentation: [Loom](#)
+* Project Presentation: [Loom](https://www.loom.com/share/291f99a17d0542e09a48fd3f7c0e83cc) :point_left:
 
 <!-- CONTACT -->
 ## Contributors
