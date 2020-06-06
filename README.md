@@ -59,7 +59,6 @@ As a logged in user, it is possible to create articles, edit profile, comment, v
 The app can be used also on read only mode, with restricted access to its features.
 
 ![screenshot-1](app/assets/images/screenshot-1.png)
-+ ![gif](app/assets/images/gif.gif)
 
 <!-- INSTALLATION -->
 ## Installation
