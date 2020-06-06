@@ -58,10 +58,8 @@ It is a webapp where users can register using name, username, password and can s
 As a logged in user, it is possible to create articles, edit profile, comment, vote and bookmark an article for future reads.
 The app can be used also on read only mode, with restricted access to its features.
 
-  ![screenshot-1](app/assets/images/screenshot-1.png)
-<p align="center">
-  <img align="center" width="300" height="500" src="app/assets/images/gif.gif">
-</p>
+![screenshot-1](app/assets/images/screenshot-1.png)
+>>![gif](app/assets/images/gif.gif)
 
 <!-- INSTALLATION -->
 ## Installation
