@@ -195,6 +195,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  transform: translateY(66px);
 
   .divider-item {
     font-size: 1.5rem;
@@ -211,6 +212,7 @@
 
 .social-media-login {
   height: 70%;
+  transform: translateY(50px);
 
   .social-media-header {
     font-size: 1.7rem;
@@ -331,12 +333,14 @@
   .social-media-login {
     flex-basis: 100%;
     width: 100%;
+    transform: translateY(0);
   }
 
   .login-divider {
     flex-direction: initial;
     height: 100%;
     justify-content: space-around;
+    transform: translateY(0);
 
     .divider-item {
       text-transform: uppercase;
