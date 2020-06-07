@@ -24,9 +24,9 @@ class ApplicationController < ActionController::Base
   private
 
   def authorize
-    if current_user.try(:admin) == false
-      flash['alert-danger'] = 'You must be logged'
-      redirect_to(request.referer)
-    end
+    return unless current_user.try(:admin) == false
+
+    flash['alert-danger'] = 'You must be logged'
+    redirect_to(request.referer)
   end
 end

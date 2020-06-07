@@ -78,10 +78,10 @@ module ArticlesHelper
 
   def bookmark_form
     if current_user
-      render partial: 'bookmark_form', locals: {article: @article}
+      render partial: 'bookmark_form', locals: { article: @article }
     else
       link_to bookmarks_path do
-        button_tag fa_icon("bookmark"), class: "vote-button"
+        button_tag fa_icon('bookmark'), class: 'vote-button'
       end
     end
   end

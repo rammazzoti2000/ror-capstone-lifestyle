@@ -26,10 +26,10 @@ module UsersHelper
   end
 
   def gravatar_image
-    unless avatar_present(current_user.avatar)
-      gravatar_for(current_user, 'profile-img-lg')
+    if avatar_present(current_user.avatar)
+      image_tag(current_user.avatar_url, class: 'avatar', id: 'previewImage')
     else
-      image_tag(current_user.avatar_url, class: "avatar", id: "previewImage")
+      gravatar_for(current_user, 'profile-img-lg')
     end
   end
 end
