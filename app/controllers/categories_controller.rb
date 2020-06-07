@@ -1,5 +1,5 @@
 class CategoriesController < ApplicationController
-  before_action :authorize, only: [:create]
+  before_action :authorize
 
   def index
     cat = params[:name]
