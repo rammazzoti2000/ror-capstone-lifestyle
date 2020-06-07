@@ -1,0 +1,57 @@
+<div class="main-content new-article">
+  <div class="article-form">
+
+    <%= form_for(@article, html: { multipart: true }) do |f| %>
+
+      <%= render 'shared/errors', object: f.object %>
+
+      <div class="row">
+        <div class="col-12 col-lg-8">
+          <div class="group">
+            <%= f.text_area :title, autocomplete: 'off', maxlength: "60", class: "input", placeholder: "Title" %>
+          </div>
+          <div class="group">
+            <%= f.label :text, "Text", class: "article-body-label" %>
+            <%= f.text_area :text, class: "input article-text-area", id: "article-text-area", placeholder: "Tell your story" %>
+          </div>
+
+        </div>
+        <div class="col-12 col-lg-4 mt-5">
+          <div class="article-featured-image" id="article-featured">
+            <div id="display-img" class="display-img"></div>
+            <%= f.file_field :featured_image, id: "article-image", class: "article-image file-input" %>
+            <div id="drop_zone" class="drop-zone">
+              <h2 class="text-center">Add Featured Image</h2>
+            </div>
+          </div>
+          <div class="input-group-side">
+            <div class="group">
+              <div class="input-group mb-2">
+                <div class="input-group-prepend">
+                  <div class="input-group-text"><%= fa_icon('list-alt') %></div>
+                </div>
+                <%= collection_select(:article, :category_id, Category.all, :id, :name_with_caps, {prompt: "Select Category"}, {class: "form-control cat-select"}) %>
+              </div>
+            </div>
+
+            <div class="group">
+              <div class="input-group mb-2">
+                <div class="input-group-prepend">
+                  <div class="input-group-text"><%= fa_icon('tag') %></div>
+                </div>
+                <%= f.text_field :tag_list, placeholder: "Article Tags", class: "form-control tag-select" %>
+
+              </div>
+              <small class="tag-info">Seperate tags with a comma</small>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="group">
+        <%= f.submit "Save", :name => 'save_button', class: "button" %>
+        <%= f.submit "Publish", :name => 'publish_button', class: "button", data: {confirm: 'Are you sure?'} %>
+      </div>
+    <% end %>
+  </div>
+</div>

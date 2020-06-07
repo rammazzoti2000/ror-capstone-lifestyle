@@ -1,0 +1,7 @@
+<%= form_for(current_user.votes.build, remote: true) do |f| %>
+  <%= hidden_field_tag :article_id, @article.id %>
+  <span class="vote">
+      <%= f.button fa_icon("arrow-alt-circle-up", type: :regular), class: "vote-button" %> &nbsp;
+      <span class="view-no"><%= @article.voters.count %></span>
+  </span>
+<% end %>

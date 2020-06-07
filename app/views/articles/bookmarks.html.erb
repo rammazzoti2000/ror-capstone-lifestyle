@@ -1,0 +1,53 @@
+<div class="main-content category-articles">
+  <div class="category-articles-all">
+    <% if article_present(@bookmarked_articles) %>
+      <div class="section-heading text-center py-4">
+        <h2 class="display-4 py-4">Your Bookmarked Articles</h2>
+      </div>
+
+      <div class="category-all-articles d-flex flex-wrap mb-5">
+        <% @bookmarked_articles.each_with_index do |article, index| %>
+          <div class="article-contents d-flex flex-row flex-wrap order-md-<%= parent_order(index+1) %> order-xl-<%= parent_order(index+1)%>">
+            <div class="article-cont p-0 col-12 col-sm-6 order-<%= get_order_1(index) %> order-xl-<%= get_order_1(index) %>">
+              <%= image_tag(article.featured_image_url, alt: article.title, class: "img-fluid") %>
+            </div>
+            <div class="article-cont p-0 col-12 col-sm-6 order-<%= get_order_2(index) %> order-xl-<%= get_order_2(index) %>">
+              <div class="article-item-desc">
+                <h6><%= link_to article.title.titleize, article_path(article) %></h6>
+                <p><%= string_length(article.text, 80) %></p>
+                <span>By  <%= article.author.name %></span>
+                <div class="attr d-flex justify-content-start align-items-center">
+                  <span class="view">
+                    <% if count_all(article.votes).positive? %>
+                      <%= fa_icon('arrow-alt-circle-up') %> &nbsp;
+                      <span class="view-no"><%= count_all(article.votes) %></span>
+                    <% else %>
+                      <%= fa_icon("arrow-alt-circle-up", class: "vote-button text-dark" )%> &nbsp;
+                      <span class="view-no"><%= count_all(article.votes) %></span>
+                    <% end %>
+                  </span>
+                  <span class="comment">
+                    <% if count_all(article.comments).positive? %>
+                      <%= fa_icon('comment-alt') %> &nbsp;
+                      <span class="view-no"><%= count_all(article.comments) %></span>
+                    <% else %>
+                      <%= fa_icon('comment-alt', class: "text-dark") %> &nbsp;
+                      <span class="view-no"><%= count_all(article.comments) %></span>
+                    <% end %>
+                  </span>
+                  <span class="min-read">
+                    <%= min_read(article.text) %> mins read
+                  </span>
+                </div>
+
+              </div>
+            </div>
+        </div>
+        <% end %>
+      </div>
+    <% else %>
+      <h2 class="display-5 text-center no-article-text">You have no bookmarked article!</h2>
+    <% end %>
+
+  </div>
+</div>

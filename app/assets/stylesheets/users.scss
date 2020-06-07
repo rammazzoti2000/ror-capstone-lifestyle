@@ -1,0 +1,372 @@
+
+.signup-login-forms {
+  margin: auto;
+  width: 100%;
+  height: 123vh;
+  position: relative;
+  background: asset_url('bg.jpg') no-repeat center;
+  background-size: cover;
+  background-attachment: fixed;
+  box-shadow: 0 12px 15px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+}
+
+.form-contents {
+  width: 100%;
+  height: 123vh;
+  padding: 12rem 7rem 4rem 7rem;
+  background: rgba(78, 67, 60, 0.86);
+  display: flex;
+  justify-content: space-between;
+}
+
+.login-html,
+.social-media-login {
+  flex-basis: 40%;
+  width: 40%;
+}
+
+.login-html.edit-form {
+  width: 100%;
+  flex-basis: initial;
+}
+
+.login-html {
+  .profile-avatar {
+    width: 200px;
+    height: 200px;
+    margin: 0 auto;
+  }
+
+  .sign-in-form,
+  .sign-up-form {
+    margin-top: 2rem;
+    width: 100%;
+  }
+
+  .sign-in,
+  .sign-up,
+  .group .check {
+    display: none;
+  }
+
+  .tab,
+  .group .label,
+  .group .button {
+    text-transform: uppercase;
+  }
+
+  .tab {
+    font-size: 2rem;
+    font-weight: bold;
+    padding-bottom: 5px;
+    margin: 0 15px 10px 0;
+    display: inline-block;
+    border-bottom: 2px solid transparent;
+    color: #fff;
+    cursor: pointer;
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
+
+  .sign-in.tab.active,
+  .sign-up.tab.active {
+    color: #e25f09;
+    border-color: #e25f09;
+  }
+
+  .login-form {
+    height: 100%;
+    position: relative;
+
+    .group {
+      margin-bottom: 2rem;
+
+      .label,
+      .input,
+      .button {
+        width: 100%;
+        color: #fff;
+        display: block;
+      }
+
+      .input,
+      .button {
+        border: none;
+        padding: 12px 20px;
+        border-radius: 25px;
+        background: rgba(255, 255, 255, 0.2);
+        outline: none;
+      }
+
+      .button {
+        background: #e25f09;
+        font-size: 1.2rem;
+        font-weight: bolder;
+      }
+
+      .edit-button {
+        position: relative;
+        top: 10px;
+      }
+
+      .input {
+        font-size: 1.5rem;
+      }
+
+      .label {
+        color: #fff;
+        font-size: 1.2rem;
+      }
+
+      label .icon {
+        width: 15px;
+        height: 15px;
+        border-radius: 2px;
+        position: relative;
+        display: inline-block;
+        background: rgba(255, 255, 255, 0.1);
+
+        &::before,
+        &::after {
+          content: '';
+          width: 10px;
+          height: 2px;
+          background: #fff;
+          position: absolute;
+          transition: all 0.2s ease-in-out 0s;
+        }
+
+        &::before {
+          left: 3px;
+          width: 5px;
+          bottom: 6px;
+          transform: scale(0) rotate(0);
+        }
+
+        &::after {
+          top: 6px;
+          right: 0;
+          transform: scale(0) rotate(0);
+        }
+      }
+
+      .check:checked + label {
+        color: #fff;
+      }
+
+      .check:checked + label .icon {
+        background: #e25f09;
+      }
+
+      .check:checked + label .icon::before {
+        transform: scale(1) rotate(45deg);
+      }
+
+      .check:checked + label .icon::after {
+        transform: scale(1) rotate(-45deg);
+      }
+    }
+  }
+
+  .sign-in:checked + .tab + .sign-up + .tab + .login-form .sign-in-form {
+    transform: rotate(0);
+  }
+
+  .sign-up:checked + .tab + .login-form .sign-up-form {
+    transform: rotate(0);
+  }
+
+  .hr {
+    height: 2px;
+    margin: 60px 0 50px 0;
+    background: rgba(255, 255, 255, 0.2);
+  }
+
+  .foot-lnk {
+    text-align: center;
+  }
+}
+
+.login-divider {
+  position: relative;
+  height: 40%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .divider-item {
+    font-size: 1.5rem;
+    color: #fff;
+  }
+
+  .start-divider,
+  .end-divider {
+    width: 1px;
+    height: 90px;
+    background: #aaa;
+  }
+}
+
+.social-media-login {
+  height: 70%;
+
+  .social-media-header {
+    font-size: 1.7rem;
+    color: #fff;
+    text-transform: uppercase;
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+
+  .social-login {
+    border: 1px solid #777;
+    border-color: rgba(0, 0, 0, 0.2);
+    border-radius: 0.3em;
+    color: #fff;
+    box-shadow: inset 0 0.08em 0 rgba(255, 255, 255, 0.4), inset 0 0 0.1em rgba(255, 255, 255, 0.9);
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.5);
+    position: relative;
+    padding: 0.8rem;
+    margin: 1rem 0;
+
+    a {
+      color: #fff;
+      font-size: 1.5rem;
+      text-transform: uppercase;
+
+      &:hover {
+        text-decoration: none;
+      }
+    }
+  }
+
+  .facebook-login {
+    background: #4863ae;
+  }
+
+  .linkedin-login {
+    background: #0083a8;
+  }
+
+  .twitter-login {
+    background: #46c0fb;
+  }
+}
+
+.facebook,
+.facebook:hover {
+  color: #4863ae;
+}
+
+.linkedin,
+.linkedin:hover {
+  color: #0083a8;
+}
+
+.twitter,
+.twitter:hover {
+  color: #46c0fb;
+}
+
+// Profile Page
+
+.login-html .profile-avatar,
+.display-avatar {
+  width: 200px;
+  height: 200px;
+}
+
+.display-avatar img,
+[class*='profile-img'] {
+  object-position: top;
+}
+
+// Edit Profile Page
+
+.avatar {
+  position: relative;
+  object-position: top;
+
+  .image-label {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    padding: 0.6rem;
+    background: linear-gradient(to bottom, #f8f9fa, #c1c4c5);
+    margin: 0;
+    font-size: 1.2rem;
+    border-radius: 10px;
+  }
+}
+
+.group input.edit-profile {
+  width: auto !important;
+}
+
+.user-avatar {
+  visibility: hidden;
+}
+
+@media only screen and (max-width: 768px) {
+  .signup-login-forms,
+  .form-contents {
+    height: 100%;
+  }
+
+  .form-contents {
+    flex-direction: column;
+    padding: 12rem 6rem;
+  }
+
+  .form-contents > * {
+    margin: 2rem 0;
+  }
+
+  .login-html,
+  .social-media-login {
+    flex-basis: 100%;
+    width: 100%;
+  }
+
+  .login-divider {
+    flex-direction: initial;
+    height: 100%;
+    justify-content: space-around;
+
+    .divider-item {
+      text-transform: uppercase;
+    }
+
+    .start-divider,
+    .end-divider {
+      width: 40%;
+      height: 1px;
+      background: #aaa;
+    }
+  }
+
+  .file-input {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+@media only screen and (max-width: 530px) {
+  .login-html {
+    .profile-avatar,
+    .display-avatar {
+      max-width: 200px;
+      width: 100%;
+      height: 200px;
+    }
+  }
+
+  .form-contents {
+    padding: 12rem 3rem;
+  }
+}

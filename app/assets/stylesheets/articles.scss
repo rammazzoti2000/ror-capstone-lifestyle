@@ -1,0 +1,459 @@
+// Place all the styles related to the Articles controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+.button {
+  border-radius: 20px;
+  background: #fd6000;
+  font-size: 1.3rem;
+  font-weight: bold;
+  padding: 0.7rem 1rem;
+  color: #fff;
+  border: none;
+  outline: none;
+
+  &:hover {
+    background: #6e1804;
+    color: #fff;
+    text-decoration: none;
+  }
+}
+
+i {
+  font-size: 2.2rem;
+}
+
+.input {
+  width: 100%;
+  background-color: wheat;
+  border: none;
+  border-radius: 8px;
+  outline: none;
+  padding: 1rem;
+  font-size: 1.5rem;
+}
+
+.view,
+.min-read {
+  display: flex;
+  align-items: center;
+  margin: 0 0.7rem;
+
+  i {
+    color: #eb3007;
+    font-size: 1.5rem;
+  }
+
+  .fa-eye-views {
+    font-size: 2.2rem;
+  }
+}
+
+.comment {
+  display: flex;
+  align-items: center;
+  margin: 0 0.7rem;
+
+  i {
+    color: #eb3007;
+    font-size: 1.5rem;
+  }
+
+  .fa-eye-views {
+    font-size: 2.2rem;
+  }
+}
+
+.saved-art.view {
+  position: absolute;
+  top: -10px;
+  right: -15px;
+
+  i {
+    font-size: 3rem !important;
+  }
+}
+
+.category-form {
+  width: 50%;
+
+  .input,
+  .input::placeholder {
+    font-size: 1.8rem !important;
+  }
+}
+
+.new-article {
+  transform: translateY(3rem);
+
+  .article-form {
+    width: 90%;
+    margin: 0 auto 7%;
+
+    .group {
+      margin: 1rem 0;
+
+      .cat-select,
+      .tag-select {
+        height: 42px;
+        border: none;
+        border-top-right-radius: 20px;
+        border-bottom-right-radius: 20px;
+        outline: none;
+        font-size: 1.5rem;
+        color: #999;
+      }
+
+      .input-group-text i {
+        font-size: 1.7rem;
+        color: #444;
+      }
+
+      .tag-info {
+        font-size: 1.2rem;
+      }
+
+      .input {
+        border: none;
+        font-size: 3rem;
+        padding: 12px 20px 0;
+        border-radius: 0 0 10px 10px;
+        background: rgba(255, 255, 255, 0.2);
+        outline: none;
+        color: #757575;
+        width: 100%;
+        height: 69px;
+
+        &::placeholder {
+          font-size: 3rem;
+          color: #7575759d;
+        }
+      }
+
+      .article-text-area {
+        font-size: 1.7rem;
+        background-color: #fff;
+        min-height: 400px;
+        box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.3);
+        border-radius: 0 0 10px 10px;
+
+        &::placeholder {
+          font-size: 1.7rem;
+        }
+      }
+    }
+  }
+
+  .fr-placeholder,
+  .fr-element p {
+    font-size: 1.8rem !important;
+  }
+
+  .fr-wrapper,
+  .second-toolbar {
+    border: none !important;
+  }
+
+  .fr-toolbar,
+  .input-group-text {
+    background: #f9792b;
+  }
+
+  .second-toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem;
+
+    a {
+      display: none;
+    }
+  }
+
+  .article-body-label {
+    width: 100%;
+    padding: 1.5rem 2rem;
+    background: #f9792b;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    font-size: 2rem;
+    box-shadow: 0 -1px 10px 0 rgba(0, 0, 0, 0.3);
+    margin-bottom: 0;
+  }
+
+  .drop-zone {
+    position: absolute;
+    top: 0;
+    width: 300px;
+    height: 300px;
+    z-index: -1;
+    border: 2px dashed #ccc;
+    border-radius: 6px;
+    background-color: #f8f8f8;
+    font-size: 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+.file-input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 300px;
+  height: 300px;
+  opacity: 0;
+  cursor: pointer;
+  border-radius: 20px;
+}
+
+.article-featured-image,
+.article-featured-image-edit {
+  margin: 0 auto;
+  position: relative;
+  height: 300px;
+}
+
+.display-img {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.article-page {
+  transform: translateY(61px);
+
+  .card-cat {
+    font-size: 1.5rem;
+    font-family: 'Arial', serif;
+    color: #eb3007;
+  }
+
+  .article-info {
+    font-size: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+
+    .author-name {
+      color: #eb3007;
+    }
+
+    .date {
+      font-size: 1.3rem;
+    }
+
+    .info2 {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      > * {
+        margin: 0 1rem;
+      }
+
+      i.checked {
+        color: #eb3007;
+      }
+
+      .view,
+      .vote {
+        display: flex;
+        align-items: center;
+      }
+
+      .view-no {
+        font-size: 1.2rem;
+      }
+
+      .vote-button,
+      .bookmark-button {
+        background: transparent;
+        border: 0;
+        outline: 0;
+      }
+
+      .pseudo-vote {
+        color: initial;
+      }
+    }
+  }
+
+  .card-text span {
+    font-size: 1.7rem !important;
+    font-family: Georgia, 'Arial', Times, serif !important;
+  }
+
+  .author-social-link {
+    hr {
+      border-top: 3px solid rgb(235, 48, 7);
+    }
+
+    .author-social-icons {
+      justify-content: flex-end;
+      display: flex;
+
+      .linkedin,
+      .twitter {
+        margin: 0 1rem;
+      }
+    }
+  }
+
+  .comment-card {
+    border: none;
+    margin: 3rem 0 5rem;
+
+    .comment-header {
+      display: flex;
+      justify-content: space-between;
+      font-size: 1.8rem;
+
+      .comment-title {
+        font-family: 'Arial', serif;
+      }
+    }
+
+    input:not(.button) {
+      color: #333;
+      background-color: wheat;
+    }
+  }
+
+  .comment-form {
+    margin-top: 4rem;
+
+    .group {
+      margin: 2rem 0;
+    }
+
+    // .input {
+    //   width: 100%;
+    //   background-color: wheat;
+    //   border: none;
+    //   border-radius: 8px;
+    //   outline: none;
+    //   padding: 1rem;
+    //   font-size: 1.5rem;
+    // }
+  }
+
+  .label,
+  .comment-name {
+    font-size: 1.5rem;
+    font-family: 'Arial', serif;
+  }
+
+  .all-comments {
+    .comment-name {
+      text-transform: uppercase;
+      font-weight: bold;
+    }
+
+    .comment-body span {
+      font-weight: lighter;
+      text-transform: uppercase;
+    }
+  }
+
+  .article-tags {
+    font-size: 1.4rem;
+  }
+}
+
+// Suggested Articles
+.card-text {
+  font-size: 1.6rem;
+  font-family: 'Arial', serif;
+}
+
+.suggested-articles {
+  .card-title {
+    font-size: 1.5rem;
+    color: #eb3007;
+    font-weight: bold;
+  }
+
+  .card-text {
+    text-transform: uppercase;
+    font-size: 1.3rem;
+  }
+
+  .suggested-article-link:hover {
+    text-decoration: none;
+  }
+
+  .image.ripple.suggested-image {
+    height: 120px;
+  }
+}
+
+.popular-articles {
+  .list-group-item.header {
+    background-color: #fbf9f4;
+    text-align: center;
+  }
+
+  .list-group-item.list:hover {
+    background-color: #fbf9f4;
+  }
+
+  .card-cat {
+    font-size: 2rem;
+    padding-top: initial;
+  }
+
+  .card-title {
+    padding-top: initial;
+  }
+}
+
+.saved-art.min-read {
+  color: #eb3007;
+}
+
+// Media Queries
+
+@media only screen and (max-width: 748px) {
+  .suggested-article-content {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-column-gap: 10px;
+  }
+
+  .new-article {
+    .article-image,
+    .drop-zone,
+    .display-avatar {
+      width: 100%;
+      height: 100%;
+    }
+  }
+}
+
+@media only screen and (max-width: 530px) {
+  .suggested-article-content {
+    grid-template-columns: repeat(1, 1fr);
+
+    img {
+      height: 150px;
+    }
+  }
+
+  .article-featured-image {
+    width: auto;
+    height: 200px;
+    position: relative;
+  }
+
+  .article-featured-image-edit {
+    width: auto;
+    height: auto;
+    position: relative;
+  }
+
+  .category-form {
+    width: 100%;
+  }
+}

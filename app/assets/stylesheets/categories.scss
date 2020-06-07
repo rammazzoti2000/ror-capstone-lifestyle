@@ -1,0 +1,86 @@
+// Place all the styles related to the Categories controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+.main-content.category-articles {
+  // min-width: 1150px;
+  transform: translateY(61px);
+
+  h1 {
+    padding-top: 3rem;
+    font-family: 'Vollkorn', serif;
+  }
+
+  .row-1 {
+    padding: 3rem;
+  }
+
+  .article-cont {
+    height: 250px;
+
+    img {
+      object-fit: cover;
+      height: 100%;
+    }
+  }
+
+  .article-item-desc {
+    padding: 1rem 2rem;
+    background: #fff;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    a {
+      font-size: 1.3rem;
+    }
+
+    h6 a {
+      color: #eb3108;
+      font-size: 1.5rem;
+      font-weight: bold;
+      margin-bottom: 1rem;
+
+      a:hover {
+        text-decoration: none;
+      }
+    }
+
+    p {
+      font-family: 'Vollkorn', serif;
+      font-size: 1.7rem;
+    }
+
+    i,
+    span {
+      font-size: 1.3rem;
+    }
+  }
+}
+
+.main-content.article-page {
+  transform: translateY(80px);
+}
+
+.category-all-articles {
+  .article-contents {
+    width: 50%;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .category-all-articles {
+    .article-contents {
+      width: 100%;
+    }
+  }
+}
+
+@media only screen and (max-width: 575px) {
+  .category-all-articles {
+    .article-cont {
+      order: 1;
+    }
+  }
+}
