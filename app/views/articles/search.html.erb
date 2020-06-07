@@ -1,0 +1,40 @@
+<div class="container-fluid main-content py-4">
+  <div class="row right-column">
+
+    <div class="col-12">
+      <div class="card mb-3">
+        <div class="card-header">
+          <p>
+          <strong>
+            <%= search_info(@search_param, @search_articles) %>
+          </strong>
+          </p>
+        </div>
+      </div>
+      <% if article_present(@search_articles) %>
+        <div class="card">
+          <div class="card-header d-flex flex-column">
+
+            <ul class="list-group list-group-flush non-friends-list">
+              <% @search_articles.each do |article| %>
+
+                <li class="list-group-item">
+                  <div class="post-creator">
+
+                    <div class="post-creator-info d-flex justify-content-between align-items-center">
+                      <p class="card-subtitle d-flex flex-column">
+                        <%= link_to article.title, article_path(article), class: "text-dark" %>
+                      </p>
+
+                    </div>
+                  </div>
+                </li>
+
+              <% end %>
+            </ul>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

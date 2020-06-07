@@ -1,0 +1,17 @@
+<ul class="list-group list-group-flush">
+  <% @article.comments.each do |comment| %>
+    <li class="list-group-item">
+      <div class="comment-creator">
+        <div class="comment-creator-info d-flex justify-content-between align-items-center">
+          <div class="comment-creator-desc d-flex flex-column">
+            <div class="comment-name"><%= comment.name %> says...</div>
+              <div class="comment-body">
+                <p><%= sanitize comment.body %></p>
+                <span><%= get_strftime(comment.created_at, "%B %d %Y") %></span>
+              </div>
+          </div>
+        </div>
+      </div>
+    </li>
+  <% end %>
+</ul>

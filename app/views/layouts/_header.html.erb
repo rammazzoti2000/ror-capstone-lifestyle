@@ -1,0 +1,105 @@
+<div class="wrapper">
+  <header class="header-nav">
+    <nav class="nav flex-item">
+      <div class="nav-navbar small flex-item">
+      <div class="menu-toggler bars">
+          <div class="start bar"></div>
+          <div class="middle bar"></div>
+          <div class="end bar"></div>
+        </div>
+        <div class="nav-brand">
+          <a href="/">
+            <div class="nav-brand brand-header">
+              <span>LifeOpedia!</span>
+            </div>
+          </a>
+        </div>
+      </div>
+      <div class="navbar-content">
+        <div class="nav-navbar large">
+           <div class="nav-brand">
+            <a href="/">
+              <div class="nav-brand brand-header">
+                <span>LifeOpedia!</span>
+              </div>
+            </a>
+          </div>
+        </div>
+        <ul class="navbar nav-links">
+          <li class="nav-item">
+            <%= link_to "Home", root_path, class: "#{active_class('/')} nav-link"%>
+          </li>
+          <% @categories.each do |link| %>
+            <li class="nav-item">
+              <%= link_to link.name.capitalize, categories_path(name: link.name), class: "#{get_active_link(link.name)} nav-link"%>
+            </li>
+          <% end %>
+        </ul>
+        <ul class="navbar">
+          <% if logged_in? %>
+            <li class="nav-item profile">
+              <%= avatar(current_user, 'profile-img-lg') %>
+              <ul class="navbar profile-dropdown">
+                <li class="nav-item profile-name-content">
+                  <%= avatar(current_user, 'profile-img-sm') %>
+                  <div class="profile-name">
+                    <span><%= @current_user.name %></span>
+                    <span>@<%= @current_user.username %></span>
+                  </div>
+                </li>
+                <li class="nav-item prof">
+                  <%= link_to "Profile", profile_path, class: "#{active_class(profile_path)} nav-link" %>
+                </li>
+                <li class="nav-item prof">
+                  <%= link_to "Write An Article", new_article_path, class: "#{active_class(new_article_path)} nav-link" %>
+                </li>
+                <li class="nav-item prof">
+                  <%= link_to "Your Articles", published_articles_path, class: "#{active_class(published_articles_path)} nav-link" %>
+                </li>
+                <li class="nav-item prof">
+                  <%= link_to "Your Archives", saved_articles_path, class: "#{active_class(saved_articles_path)} nav-link" %>
+                </li>
+                <li class="nav-item prof">
+                  <%= link_to "Your Bookmarks", bookmarks_path, class: "#{active_class(bookmarks_path)} nav-link" %>
+                </li>
+                <% if current_user.admin %>
+                  <li class="nav-item prof">
+                    <%= link_to "Create Category", create_category_path, class: "#{active_class(create_category_path)} nav-link" %>
+                  </li>
+                <% end %>
+                <li class="nav-item last prof">
+                  <%= link_to "Logout", logout_path, class: "nav-link", method: :delete %>
+                </li>
+              </ul>
+            </li>
+          <% else %>
+            <li class="nav-item reg-links">
+              <%= link_to "Login", login_path, class: "nav-link search-hide" %>
+            </li>
+            <li class="nav-item divider reg-links">
+              <span>|</span>
+            </li>
+            <li class="nav-item reg-links">
+              <%= link_to "Register", signup_path, class: "nav-link search-hide" %>
+            </li>
+          <% end %>
+
+        </ul>
+
+      </div>
+      <div class="nav-item search-contents">
+        <%= form_tag(search_path, method: :get, class: 'search-form') do %>
+          <div class="search-form-content">
+            <%= text_field_tag :q, params[:q], class: "form-control search-input", placeholder:"Search" %>
+            <%= button_tag "", :name => nil, class: "btn search-button" do %>
+              <%= fa_icon("search", class: "search-icon") %>
+            <% end %>
+          </div>
+        <% end %>
+        <div class="psuedo-search-button">
+          <%= fa_icon("search", class: "search-icon") %>
+        </div>
+      </div>
+    </nav>
+  </header>
+</div>

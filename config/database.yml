@@ -21,5 +21,11 @@ test:
   database: db/test.sqlite3
 
 production:
-  <<: *default
-  database: db/production.sqlite3
+  adapter: postgresql
+  encoding: unicode
+  # For details on connection pooling, see Rails configuration guide
+  # https://guides.rubyonrails.org/configuring.html#database-pooling
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  database: ror_capstone_lifestyle_production
+  username: ror_capstone_lifestyle
+  password: <%= ENV['ROR_CAPSTONE_LIFESTYLE_DATABASE_PASSWORD'] %>

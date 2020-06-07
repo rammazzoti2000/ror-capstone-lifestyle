@@ -1,0 +1,6 @@
+<%= form_for(current_user.votes.find_by(article_id: @article.id), remote: true, html: { method: :delete }) do |f| %>
+  <span class="vote">
+    <%= f.button fa_icon('arrow-alt-circle-up', class: "checked"), class: "vote-button" %> &nbsp;
+    <span class="view-no"><%= @article.voters.count %></span>
+  </span>
+<% end %>

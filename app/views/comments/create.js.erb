@@ -1,0 +1,4 @@
+$("#all-comments").html("<%= escape_javascript(render('articles/comment', locals: { article: @article })) %>");
+$("#comment-title").html("<%= comment_count(@article.comments) %>");
+$("#comment-name").val("");
+$("#comment-body").val("");
