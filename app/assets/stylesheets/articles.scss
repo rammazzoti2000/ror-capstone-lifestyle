@@ -331,16 +331,6 @@ i {
     .group {
       margin: 2rem 0;
     }
-
-    // .input {
-    //   width: 100%;
-    //   background-color: wheat;
-    //   border: none;
-    //   border-radius: 8px;
-    //   outline: none;
-    //   padding: 1rem;
-    //   font-size: 1.5rem;
-    // }
   }
 
   .label,
@@ -418,6 +408,13 @@ i {
 }
 
 // Media Queries
+@media only screen and (max-width: 991px) {
+  .article-form {
+    .right-column {
+      transform: translateY(0) !important;
+    }
+  }
+}
 
 @media only screen and (max-width: 748px) {
   .suggested-article-content {
