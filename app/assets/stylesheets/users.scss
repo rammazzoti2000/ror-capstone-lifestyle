@@ -139,15 +139,15 @@
         }
 
         &::before {
-          left: 3px;
+          left: 2px;
           width: 5px;
-          bottom: 6px;
+          bottom: 5px;
           transform: scale(0) rotate(0);
         }
 
         &::after {
           top: 6px;
-          right: 0;
+          right: 1px;
           transform: scale(0) rotate(0);
         }
       }
@@ -212,14 +212,14 @@
 
 .social-media-login {
   height: 70%;
-  transform: translateY(50px);
 
   .social-media-header {
-    font-size: 1.7rem;
+    font-size: 2rem;
+    font-weight: bold;
     color: #fff;
     text-transform: uppercase;
     text-align: center;
-    margin-bottom: 2rem;
+    margin-bottom: 5rem;
   }
 
   .social-login {
@@ -234,7 +234,7 @@
     text-shadow: 0 1px 0 rgba(0, 0, 0, 0.5);
     position: relative;
     padding: 0.8rem;
-    margin: 1rem 0;
+    margin: 2rem 0;
 
     a {
       color: #fff;
@@ -333,7 +333,10 @@
   .social-media-login {
     flex-basis: 100%;
     width: 100%;
-    transform: translateY(0);
+  }
+
+  .social-media-header {
+    margin-bottom: 4rem !important;
   }
 
   .login-divider {
