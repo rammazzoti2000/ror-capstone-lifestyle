@@ -1,4 +1,6 @@
 class CategoriesController < ApplicationController
+  before_action :authorize, only: [:create]
+
   def index
     cat = params[:name]
     @category = Category.find_by(name: cat)

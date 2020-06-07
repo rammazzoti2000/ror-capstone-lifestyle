@@ -36,11 +36,7 @@
               </div>
               <div class="col-12 col-sm-6 order-1 order-sm-2 mb-5 mb-sm-0">
                 <div class="profile-avatar">
-                  <% unless avatar_present(current_user.avatar) %>
-                    <%= gravatar_for(current_user, 'profile-img-lg') %>
-                  <% else %>
-                    <%= image_tag(current_user.avatar_url, class: "avatar")%>
-                  <% end %>
+                  <%= gravatar_image  %>
                 </div>
               </div>
             </div>

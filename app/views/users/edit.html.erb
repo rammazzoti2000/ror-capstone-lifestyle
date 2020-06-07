@@ -45,11 +45,7 @@
                 <div class="profile-avatar" id="article-featured">
                   <div class="avatar">
                     <div id="display-avatar" class="display-avatar">
-                      <% unless avatar_present(current_user.avatar) %>
-                        <%= gravatar_for(current_user, 'profile-img-lg') %>
-                      <% else %>
-                        <%= image_tag(current_user.avatar_url, id: "previewImage") %>
-                      <% end %>
+                      <%= gravatar_image %>
                     </div>
 
                     <%= f.label :avatar, "Change Profile Image", class: "image-label" %>

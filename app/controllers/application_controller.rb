@@ -20,4 +20,13 @@ class ApplicationController < ActionController::Base
   def all_cat
     @categories = Category.all
   end
+
+  private
+
+  def authorize
+    if current_user.try(:admin) == false
+      flash['alert-danger'] = 'You must be logged'
+      redirect_to(request.referer)
+    end
+  end
 end

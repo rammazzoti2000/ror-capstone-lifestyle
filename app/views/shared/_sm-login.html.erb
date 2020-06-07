@@ -6,11 +6,7 @@
 
 <div class="social-media-login">
   <div class="social-media-header">
-  <% if controller_name == 'sessions'%>
-    Login
-  <% else %>
-    Register
-  <% end %>
+  <%= session_status %>
   With</div>
   <div class="facebook-login social-login">
     <a href="#" class="social facebook">

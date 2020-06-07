@@ -25,20 +25,14 @@
               <% else %>
                 <%= link_to votes_path, class: "pseudo-vote" do %>
                   <span class="vote">
-                      <%= button_tag fa_icon("arrow-alt-circle-up", type: :regular), class: "vote-button" %> &nbsp;
-                      <span class="view-no"><%= count_all(@article.votes) %></span>
+                    <%= button_tag fa_icon("arrow-alt-circle-up", type: :regular), class: "vote-button" %> &nbsp;
+                    <span class="view-no"><%= count_all(@article.votes) %></span>
                   </span>
                 <% end %>
               <% end %>
               </div>
               <div class="bookmark-form" id="bookmark_form">
-                <% if current_user %>
-                 <%= render partial: 'bookmark_form', locals: {article: @article} %>
-                 <% else %>
-                  <%= link_to bookmarks_path do %>
-                    <%= button_tag fa_icon("bookmark"), class: "vote-button" %>
-                  <% end %>
-                <% end %>
+                <%= bookmark_form %>
               </div>
             </div>
           </div>
@@ -53,7 +47,7 @@
                 <div class="article-tags">
                   Tags:
                   <% @article.tags.each_with_index do |tag, index| %>
-                    <% if index == (@article.tags.length-1) %>
+                     <% if index == (@article.tags.length-1) %>
                       <%= "#{tag.name}." %>
                     <% else %>
                       <%= "#{tag.name}," %>
