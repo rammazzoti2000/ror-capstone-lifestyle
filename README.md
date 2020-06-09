@@ -163,7 +163,10 @@ User profile can be edited along with the profile's picture
 ## Database Structure
  * Database schema used for this project reflects the following structure:
  ![erd](app/assets/images/erd.png)
-
+ 
+ ## Potential future features
+- Extend the signin / signup process to social accounts, use verfied email process
+- Improve the front-end
 
 <!-- CONTACT -->
 ## Contributors
