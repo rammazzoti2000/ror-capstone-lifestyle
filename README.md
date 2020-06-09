@@ -45,9 +45,9 @@
 
 * [About the Project](#about-the-project)
   * [Built With](#built-with)
-* [Installation](#installation)
+  * [Walkthrough Video and Deployment (Heroku)](#walkthrough-video-and-deployment-(heroku))
+* [Usage](#usage)
 * [Database Structure](#database-structure)
-* [Live Demo and Presentation](#live-demo-and-presentation)
 * [Contributors](#contributors)
 * [Acknowledgements](#acknowledgements)
 * [License](#license)
@@ -62,38 +62,6 @@ The app can be used also on read only mode, with restricted access to its featur
 
 ![screenshot-1](app/assets/images/screenshot-1.png)
 
-<!-- INSTALLATION -->
-## Installation
-
-To have this app on your pc, you need to:
-* have Ruby & Ruby on Rails installed in your computer
-* [download](https://github.com/rammazzoti2000/ror-capstone-lifestyle/archive/development.zip) or clone this repo:
-  - Clone with SSH:
-  ```
-    git@github.com:rammazzoti2000/ror-capstone-lifestyle.git
-  ```
-  - Clone with HTTPS
-  ```
-    https://github.com/rammazzoti2000/ror-capstone-lifestyle.git
-  ```
-* and open the terminal inside the repo and run the bundler
-  - ```$ bundler install --without production```
-* then, run rails db:migrate && rails db:seed. This creates the database with the corresponding tables, columns and associations and will populate the database with mockup content
-  - ```$ rails db:migrate```
-  - ```$ rails db:seed```
-* and finally, you can test it in the console by running and singin with a user already defined --> :point_right: ```maxinova``` :point_left:
-  - ```$ rails server``` and using ```localhost:3000``` into your browser address bar to start using it
-  - for any technical problems running ```rails db:migrate:reset && rails db:seed``` should solve it
-  ## Rspec testing
-
-* Run the command and see the output: 
-```$ bundle exec rspec```
-![Rspec](app/assets/images/rspec.png)
-
-## Database Structure
- * Database schema used for this project reflects the following structure:
- ![erd](app/assets/images/erd.png)
-
 ### Built With
 This project was built using these technologies.
 * Ruby & Ruby on Rails
@@ -103,13 +71,105 @@ This project was built using these technologies.
 * SQLite
 * Rubocop
 * GithubActions :muscle:
-* Atom
+* Atom :atom:
 
 <!-- Live Demo -->
-## Live Demo and Presentation
-* Live Demo Link: [ror-capstone-lifeopedia](https://ror-capstone-lifeopedia.herokuapp.com/) :point_left:
+## Walkthrough Video and Deployment (Heroku)
+https://www.loom.com/share/291f99a17d0542e09a48fd3f7c0e83cc
 ##
-* Project Presentation: [Loom](https://www.loom.com/share/291f99a17d0542e09a48fd3f7c0e83cc) :point_left:
+* Live Demo Link --> App Deployed with Heroku: [ror-capstone-lifeopedia](https://ror-capstone-lifeopedia.herokuapp.com/) :point_left:
+
+### Getting Started
+
+To get a local copy up and running follow these simple example steps.
+
+### Prerequisites
+
+Ruby: 2.7.0
+Rails: 5.2.4
+
+### Clone
+* [download](https://github.com/rammazzoti2000/ror-capstone-lifestyle/archive/development.zip) or clone this repo:
+  - Clone with SSH:
+  ```
+    git@github.com:rammazzoti2000/ror-capstone-lifestyle.git
+  ```
+  - Clone with HTTPS
+  ```
+    https://github.com/rammazzoti2000/ror-capstone-lifestyle.git
+
+### Setup
+
+Install gems with:
+
+```
+$ bundler install --without production
+```
+
+Setup database with:
+
+```
+$ rails db:migrate
+$ rails db:seed
+```
+
+### Usage
+
+Start server with:
+
+```
+$ rails server
+```
+
+Open `http://localhost:3000/` in your browser and sing in with a user already defined --> :point_right: ```maxinova``` :point_left:
+- for any technical problems running ```rails db:migrate:reset && rails db:seed``` should solve it
+
+#### Create User
+
+Fill the sign up form to create a user
+
+![screenshot](app/assets/images/sign_up.png)
+
+#### Login
+
+Use only the username to login
+
+![screenshot](app/assets/images/log_in.png)
+
+#### Create a new article from the dropdown menu
+
+Type your title and text, add an image, category and a tag
+
+![screenshot](app/assets/images/post.png)
+
+#### Bookmarked articles
+
+Articles can be bookmarked and will be saved in `Your Bookmars`
+
+![screenshot](app/assets/images/follow.png)
+
+#### Edit profile picture
+
+Choose file and click on the Update photo button
+
+![screenshot](app/assets/images/workagram_photo.png)
+
+#### Edit User Profile
+
+User profile can be edited along with the profile's picture
+
+![screenshot](app/assets/images/cover.png)
+
+  ## Automated Test
+
+* Run the command and see the output: 
+```$ bundle exec rspec```
+![Rspec](app/assets/images/rspec.png)
+
+## Database Structure
+ * Database schema used for this project reflects the following structure:
+ ![erd](app/assets/images/erd.png)
+
 
 <!-- CONTACT -->
 ## Contributors
@@ -119,6 +179,17 @@ This project was built using these technologies.
 - LinkedIn: [Alexandru Bangau](https://www.linkedin.com/in/alexandru-bangau/)
 - GitHub: [@rammazzoti2000](https://github.com/rammazzoti2000)
 - E-mail: bangau.alexandru@gmail.com
+- Project [Link](https://github.com/rammazzoti2000/ror-capstone-lifestyle/)
+
+## :handshake: Contributing
+
+Contributions, issues and feature requests are welcome!
+
+Feel free to check the [issues page](https://github.com/rammazzoti2000/ror-capstone-lifestyle/issues).
+
+## Show your support
+
+Give a :star: if you like this project!
 
 
 <!-- ACKNOWLEDGEMENTS -->
