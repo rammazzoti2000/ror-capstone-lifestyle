@@ -148,12 +148,6 @@ Articles can be bookmarked and will be saved in `Your Bookmars`
 
 ![screenshot](app/assets/images/follow.png)
 
-#### Edit profile picture
-
-Choose file and click on the Update photo button
-
-![screenshot](app/assets/images/workagram_photo.png)
-
 #### Edit User Profile
 
 User profile can be edited along with the profile's picture
