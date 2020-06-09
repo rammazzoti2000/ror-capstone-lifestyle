@@ -56,7 +56,7 @@
 ## About The Project
 
 This is the Capstone project that signs the completion of the RubyOnRails module in Microverse Curriculum.
-It is a webapp where users can register using name, username, password and can signin with their username only.
+It is a webapp where users can register using name, username, password and can sign in with their username only.
 As a logged in user, it is possible to create articles, edit profile, comment, vote and bookmark an article for future reads.
 The app can be used also on read only mode, with restricted access to its features.
 
